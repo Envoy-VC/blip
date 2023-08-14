@@ -19,6 +19,7 @@ const config = createConfig({
 	publicClient,
 	webSocketPublicClient,
 	connectors: [
+		// @ts-ignore
 		new InjectedConnector({
 			options: {
 				shimDisconnect: false,

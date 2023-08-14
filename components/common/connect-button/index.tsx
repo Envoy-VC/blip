@@ -26,6 +26,7 @@ const ConnectButton = () => {
 	const { disconnectAsync } = useDisconnect();
 
 	const { connectAsync } = useConnect({
+		// @ts-ignore
 		connector: new InjectedConnector(),
 	});
 
