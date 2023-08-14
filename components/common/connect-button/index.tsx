@@ -8,7 +8,7 @@ import { PiBell, PiVideoCamera } from 'react-icons/pi';
 const ConnectButton = () => {
 	const connected = true;
 
-	if (connected) {
+	if (!connected) {
 		return (
 			<Button className='bg-primary !rounded-3xl flex items-center justify-center !p-4 !px-8 text-white hover:!text-white !text-[1rem]'>
 				Connect

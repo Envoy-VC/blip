@@ -4,7 +4,7 @@ import { Ethereum } from '@thirdweb-dev/chains';
 
 import { ConfigProvider, theme } from 'antd';
 
-import { SEO, Navbar } from '..';
+import { SEO, Navbar, Sidebar } from '..';
 import { TW_CLIENT_ID, AppMetadata } from '@/config';
 
 import { Inter } from 'next/font/google';
@@ -16,7 +16,7 @@ interface Props {
 const { defaultAlgorithm } = theme;
 
 const Layout = ({ children }: Props) => {
-	const [sidebarOpen, setSidebarOpen] = React.useState<boolean>(false);
+	const [sidebarOpen, setSidebarOpen] = React.useState<boolean>(true);
 	return (
 		<ConfigProvider
 			theme={{
@@ -31,9 +31,12 @@ const Layout = ({ children }: Props) => {
 				<>
 					<SEO />
 					<div className={`flex flex-col ${inter.className}`}>
-						<Navbar />
+						<Navbar sidebarOpen={sidebarOpen} setSideBarOpen={setSidebarOpen} />
 						<div className='flex flex-row'>
-							<div>sidebar</div>
+							<Sidebar
+								sidebarOpen={sidebarOpen}
+								setSideBarOpen={setSidebarOpen}
+							/>
 							{children}
 						</div>
 					</div>

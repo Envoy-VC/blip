@@ -9,8 +9,6 @@ import {
 	PiBookmarksSimple,
 	PiGearSix,
 	PiSignOut,
-	PiMoonStars,
-	PiCloudSun,
 } from 'react-icons/pi';
 
 // Types

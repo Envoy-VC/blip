@@ -68,7 +68,7 @@ const Navbar = ({ sidebarOpen, setSideBarOpen }: Props) => {
 							</Tooltip>
 						}
 						size='small'
-						className='max-w-[28rem] rounded-3xl py-2 px-4 text-[0.875rem]'
+						className='max-w-[28rem] rounded-3xl py-2 px-4 text-[0.875rem] hidden md:flex'
 					/>
 				</ConfigProvider>
 				<div className='flex flex-row items-center gap-4'>
