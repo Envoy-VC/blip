@@ -9,6 +9,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@lens-protocol/react-web": "^1.2.2",
 		"@thirdweb-dev/chains": "^0.1.43",
 		"@thirdweb-dev/react": "^3.14.31",
 		"@thirdweb-dev/sdk": "^3.10.50",
