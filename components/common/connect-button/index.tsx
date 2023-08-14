@@ -1,20 +1,92 @@
 import React from 'react';
-import { Button, Avatar, Badge } from 'antd';
+import { Button, Avatar, Badge, Spin, ConfigProvider } from 'antd';
+
+import { useWalletLogin } from '@lens-protocol/react-web';
+import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import { InjectedConnector } from 'wagmi/connectors/injected';
+
+import { useActiveWallet } from '@lens-protocol/react-web';
 
 import UserDropdown from './user-dropdown';
 
 import { PiBell, PiVideoCamera } from 'react-icons/pi';
+import { LoadingOutlined } from '@ant-design/icons';
+import { LensLogo } from '@/components/icons';
 
 const ConnectButton = () => {
-	const connected = true;
+	const {
+		execute: login,
+		error: loginError,
+		isPending: isLoginPending,
+	} = useWalletLogin();
 
-	if (!connected) {
+	const { data: wallet, loading } = useActiveWallet();
+	const [isLoggingIn, setIsLoggingIn] = React.useState<boolean>(false);
+	const { isConnected } = useAccount();
+	const { disconnectAsync } = useDisconnect();
+
+	const { connectAsync } = useConnect({
+		connector: new InjectedConnector(),
+	});
+
+	const loginWithLens = async () => {
+		try {
+			setIsLoggingIn(true);
+			if (isConnected) {
+				await disconnectAsync();
+			}
+
+			const { connector } = await connectAsync();
+
+			if (connector instanceof InjectedConnector) {
+				const walletClient = await connector.getWalletClient();
+				await login({
+					address: walletClient.account.address,
+				}).then((res) => setIsLoggingIn(false));
+			}
+			setIsLoggingIn(false);
+		} catch (error) {
+			setIsLoggingIn(false);
+			throw new Error('Error logging in with Lens');
+		}
+	};
+
+	if (wallet === null || wallet === undefined || !isConnected) {
 		return (
-			<Button className='bg-primary !rounded-3xl flex items-center justify-center !p-4 !px-8 text-white hover:!text-white !text-[1rem]'>
-				Connect
-			</Button>
+			<ConfigProvider
+				theme={{
+					token: {
+						colorTextDisabled: '#fff',
+						colorBgContainerDisabled: '#3d81ffcc',
+					},
+				}}
+			>
+				<Button
+					className='bg-[#3d81ff] !rounded-3xl !p-5 !px-8 text-white hover:!text-white !text-[1rem] flex items-center'
+					onClick={loginWithLens}
+					disabled={isLoggingIn}
+					size='large'
+				>
+					<div className='flex flex-row items-center justify-center gap-2'>
+						{isLoggingIn || isLoginPending ? (
+							<Spin
+								indicator={
+									<LoadingOutlined
+										style={{ fontSize: 20, color: '#fff' }}
+										spin
+									/>
+								}
+							/>
+						) : (
+							<LensLogo size='46' />
+						)}
+						Login with Lens
+					</div>
+				</Button>
+			</ConfigProvider>
 		);
 	}
+
 	return (
 		<div className='flex flex-row items-center gap-4'>
 			<Button
