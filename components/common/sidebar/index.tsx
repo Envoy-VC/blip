@@ -117,7 +117,7 @@ const Sidebar = ({ sidebarOpen, setSideBarOpen }: Props) => {
 	];
 	return (
 		<div
-			className={`p-4 overflow-y-scroll h-screen custom-scrollbar shadow-sm hidden sm:flex ${
+			className={`p-4 overflow-y-scroll h-[90vh] custom-scrollbar shadow-sm hidden sm:flex ${
 				sidebarOpen && 'min-w-[14rem]'
 			}`}
 		>
