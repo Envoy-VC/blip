@@ -81,7 +81,7 @@ const ConnectButton = () => {
 						) : (
 							<LensLogo size='46' />
 						)}
-						Login with Lens
+						<span className='hidden sm:flex'>Login with Lens</span>
 					</div>
 				</Button>
 			</ConfigProvider>
