@@ -19,6 +19,10 @@ interface NFTProfilePictureProps extends AvatarProps {
 	width?: string;
 	height?: string;
 }
+interface LoadingSkeletonProps {
+	width?: string;
+	height?: string;
+}
 
 const resolveURI = (value: string) => {
 	let url = value.startsWith('ipfs://')
@@ -28,6 +32,10 @@ const resolveURI = (value: string) => {
 		: value;
 	return url;
 };
+
+const LoadingProfilePicture = ({ width, height }: LoadingSkeletonProps) => (
+	<Skeleton avatar active className={`w-[${width}px] h-[${height}px]`} />
+);
 
 const RemoteProfilePicture = ({ url, ...props }: RemoteProfilePictureProps) => {
 	return <Avatar src={url} {...props} />;
@@ -59,12 +67,7 @@ const NFTImageRenderer = ({
 	}, []);
 
 	if (error) return <FallbackProfilePicture />;
-
-	if (isLoading)
-		return (
-			<Skeleton avatar active className={`w-[${width}px] h-[${height}px]`} />
-		);
-
+	if (isLoading) return <LoadingProfilePicture width={width} height={height} />;
 	return <Avatar src={data} {...props} />;
 };
 
@@ -76,7 +79,11 @@ const ProfileAvatar = ({ picture, width, height, ...props }: Props) => {
 	if (!picture) return <FallbackProfilePicture />;
 	switch (picture.__typename) {
 		case 'MediaSet':
-			return <RemoteProfilePicture url={picture.original.url} {...props} />;
+			return (
+				<RemoteProfilePicture url={picture.original.url} {...props} /> || (
+					<LoadingProfilePicture width={width} height={height} />
+				)
+			);
 		case 'NftImage':
 			return <NFTImageRenderer uri={picture.uri} {...props} />;
 		default:
