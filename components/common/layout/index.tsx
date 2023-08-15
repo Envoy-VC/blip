@@ -7,9 +7,10 @@ import { SEO, Navbar, Sidebar } from '..';
 import { WagmiConfig, configureChains, createConfig } from 'wagmi';
 import { polygon, polygonMumbai } from 'wagmi/chains';
 import { InjectedConnector } from 'wagmi/connectors/injected';
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { publicProvider } from 'wagmi/providers/public';
 
-const { publicClient, webSocketPublicClient } = configureChains(
+const { chains, publicClient, webSocketPublicClient } = configureChains(
 	[polygonMumbai, polygon],
 	[publicProvider()]
 );
@@ -25,6 +26,13 @@ const config = createConfig({
 				shimDisconnect: false,
 			},
 		}),
+		// @ts-ignore
+		new WalletConnectConnector({
+			chains: [polygonMumbai, polygon],
+			options: {
+				projectId: WALLET_CONNECT_PROJECT_ID,
+			},
+		}),
 	],
 });
 
@@ -37,6 +45,7 @@ const lensConfig: LensConfig = {
 };
 
 import { Inter } from 'next/font/google';
+import { WALLET_CONNECT_PROJECT_ID } from '@/config';
 const inter = Inter({ subsets: ['latin'] });
 
 interface Props {
