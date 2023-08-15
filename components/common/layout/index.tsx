@@ -1,16 +1,27 @@
 import React from 'react';
 import { ConfigProvider, theme } from 'antd';
-import { LensProvider } from '@lens-protocol/react-web';
 
-import { SEO, Navbar, Sidebar } from '..';
-
+// wagmi Imports
 import { WagmiConfig, configureChains, createConfig } from 'wagmi';
 import { polygon, polygonMumbai } from 'wagmi/chains';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { publicProvider } from 'wagmi/providers/public';
 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
+// LensSDK Imports
+import { LensProvider } from '@lens-protocol/react-web';
+import { LensConfig, development, production } from '@lens-protocol/react-web';
+import { bindings as wagmiBindings } from '@lens-protocol/wagmi';
+
+// Components
+import { SEO, Navbar, Sidebar } from '..';
+
+// Utils
+import { Inter } from 'next/font/google';
+import { WALLET_CONNECT_PROJECT_ID, ENVIRONMENT } from '@/config';
+
+// Wagmi Config
+const { publicClient, webSocketPublicClient } = configureChains(
 	[polygonMumbai, polygon],
 	[publicProvider()]
 );
@@ -36,23 +47,21 @@ const config = createConfig({
 	],
 });
 
-import { LensConfig, development } from '@lens-protocol/react-web';
-import { bindings as wagmiBindings } from '@lens-protocol/wagmi';
+// Lens Config
 
 const lensConfig: LensConfig = {
 	bindings: wagmiBindings(),
-	environment: development,
+	environment: production,
 };
 
-import { Inter } from 'next/font/google';
-import { WALLET_CONNECT_PROJECT_ID } from '@/config';
+// UI
 const inter = Inter({ subsets: ['latin'] });
+const { defaultAlgorithm } = theme;
 
+// Types
 interface Props {
 	children: React.ReactNode;
 }
-
-const { defaultAlgorithm } = theme;
 
 const Layout = ({ children }: Props) => {
 	const [sidebarOpen, setSidebarOpen] = React.useState<boolean>(true);

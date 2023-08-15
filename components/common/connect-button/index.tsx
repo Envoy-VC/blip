@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Avatar, Badge, ConfigProvider, Skeleton } from 'antd';
+import { Button, Badge, ConfigProvider } from 'antd';
 
 import { useAccount } from 'wagmi';
 
@@ -7,6 +7,7 @@ import { useActiveWallet, useActiveProfile } from '@lens-protocol/react-web';
 
 import UserDropdown from './user-dropdown';
 import WalletModal from './wallet-modal';
+import { Notifications } from '@/components/common';
 
 import { PiBell, PiVideoCamera } from 'react-icons/pi';
 import { ProfileAvatar } from '..';
@@ -19,7 +20,6 @@ const ConnectButton = () => {
 	const { isConnected } = useAccount();
 
 	const { data: profile } = useActiveProfile();
-	console.log(profile);
 
 	if (wallet === null || wallet === undefined || !isConnected) {
 		return (
@@ -63,9 +63,7 @@ const ConnectButton = () => {
 				type='text'
 				size='large'
 			/>
-			<Badge count={24} color='geekblue' offset={[-6, 6]}>
-				<Button icon={<PiBell size={26} />} type='text' size='large' />
-			</Badge>
+			<Notifications profileId={profile?.id!} />
 			<UserDropdown>
 				<Button
 					type='text'
