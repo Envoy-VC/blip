@@ -20,6 +20,7 @@ const ConnectButton = () => {
 	const { isConnected } = useAccount();
 
 	const { data: profile } = useActiveProfile();
+	console.log(profile)
 
 	if (wallet === null || wallet === undefined || !isConnected) {
 		return (
@@ -64,7 +65,7 @@ const ConnectButton = () => {
 				size='large'
 			/>
 			<Notifications profileId={profile?.id!} />
-			<UserDropdown>
+			<UserDropdown profile={profile!}>
 				<Button
 					type='text'
 					size='large'

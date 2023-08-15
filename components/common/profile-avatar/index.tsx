@@ -57,7 +57,10 @@ const NFTImageRenderer = ({
 				const res = await fetch(resolveURI(uri)).then((res) => res.json());
 				setData(resolveURI(res.image));
 			};
-			getNFTImage();
+			if (uri.startsWith('ipfs://') || uri.startsWith('ar://')) getNFTImage();
+			else {
+				setData(uri);
+			}
 		} catch (error) {
 			setError(true);
 			console.log(error);

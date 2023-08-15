@@ -1,6 +1,10 @@
 import React from 'react';
 import { Dropdown, Avatar, Divider } from 'antd';
 
+import { ProfileOwnedByMe, useWalletLogout } from '@lens-protocol/react-web';
+
+import { ProfileAvatar } from '../..';
+
 // Icons
 import {
 	PiVideo,
@@ -16,6 +20,7 @@ import type { MenuProps } from 'antd';
 
 interface Props {
 	children: React.ReactNode;
+	profile: ProfileOwnedByMe;
 }
 
 interface DropdownItemProps {
@@ -36,7 +41,8 @@ const DropDownItem = ({ name, icon, handleClick }: DropdownItemProps) => {
 	);
 };
 
-const UserDropdown = ({ children }: Props) => {
+const UserDropdown = ({ children, profile }: Props) => {
+	const { execute: logout } = useWalletLogout();
 	const dropdownItems: DropdownItemProps[] = [
 		{
 			name: 'Your channel',
@@ -76,17 +82,19 @@ const UserDropdown = ({ children }: Props) => {
 			key: '1',
 			label: (
 				<div className='flex flex-row gap-3 items-center max-w-sm w-full'>
-					<div>
-						<Avatar
-							src='https://ik.imagekit.io/lens/media-snapshot/tr:w-60,h-60/76b1f278593adccb1eccdf3d3bce16fd20082a880ba61f73e3f77978e674be60.png'
+					<div className='max-w-[40px]'>
+						<ProfileAvatar
+							picture={profile?.picture || null}
 							size={40}
 							shape='circle'
 						/>
 					</div>
 					<div className='flex flex-col items-start gap-0'>
-						<span className='text-[1rem] font-bold'>Envoy_</span>
+						<span className='text-[1rem] font-bold'>
+							{profile?.name?.slice(0, 15) || ''}
+						</span>
 						<span className='text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-30% from-primary to-secondary'>
-							envoy1084.lens
+							{profile?.handle.slice(0, 22) || ''}
 						</span>
 					</div>
 				</div>
@@ -97,15 +105,16 @@ const UserDropdown = ({ children }: Props) => {
 			label: <DropDownItem {...item} />,
 		})),
 		{
-			key: '8',
+			key: '7',
 			label: <Divider style={{ margin: 0 }} />,
 		},
 		{
-			key: '9',
+			key: '8',
 			label: (
 				<DropDownItem
 					name='Sign out'
 					icon={<PiSignOut size={24} color='#000' />}
+					handleClick={logout}
 				/>
 			),
 		},
