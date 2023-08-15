@@ -119,9 +119,10 @@ const WalletModal = ({
 						{wallets.map((wallet, index) => (
 							<Button
 								key={index}
-								className='p-3 flex flex-row gap-6 items-center justify-start hover:!bg-[#0f5fff1c] cursor-pointer bg-[#f1f1f1] !rounded-lg border-none !py-6'
+								className='p-3 flex flex-row gap-6 items-center justify-start cursor-pointer !rounded-lg border-none !py-6'
 								size='large'
 								shape='default'
+								type='text'
 								onClick={() =>
 									connectWallet(wallet.name as 'metamask' | 'walletconnect')
 								}

@@ -14,13 +14,12 @@ import { ProfileAvatar } from '..';
 
 const ConnectButton = () => {
 	const [walletModalOpen, setWalletModalOpen] = React.useState<boolean>(false);
-
 	const { data: wallet } = useActiveWallet();
 	const [isLoggingIn, setIsLoggingIn] = React.useState<boolean>(false);
 	const { isConnected } = useAccount();
 
 	const { data: profile } = useActiveProfile();
-	console.log(profile)
+	console.log(profile);
 
 	if (wallet === null || wallet === undefined || !isConnected) {
 		return (
@@ -59,11 +58,7 @@ const ConnectButton = () => {
 
 	return (
 		<div className='flex flex-row items-center gap-4'>
-			<Button
-				icon={<PiVideoCamera size={26} color='#000' />}
-				type='text'
-				size='large'
-			/>
+			<Button icon={<PiVideoCamera size={26} />} type='text' size='large' />
 			<Notifications profileId={profile?.id!} />
 			<UserDropdown profile={profile!}>
 				<Button

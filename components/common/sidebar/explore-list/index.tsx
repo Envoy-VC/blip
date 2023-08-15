@@ -24,13 +24,13 @@ interface Props {
 const ExploreList = ({ sidebarOpen }: Props) => {
 	return (
 		<div className='flex flex-col gap-1 '>
-			<span className='text-[1rem] text-[#525252] mt-2 font-sans font-medium m-2'>
+			<span className='text-[1rem] mt-2 font-sans font-medium m-2'>
 				Explore
 			</span>
 			{ExploreItems.map((item, index) => (
 				<Button
 					key={index}
-					className='flex flex-row gap-6 items-center bg-white hover:!bg-[#0f5fff33]'
+					className='flex flex-row gap-6 items-center'
 					type='text'
 					size='large'
 				>
@@ -49,43 +49,43 @@ const ExploreList = ({ sidebarOpen }: Props) => {
 const ExploreItems: SidebarItem[] = [
 	{
 		name: 'Trending',
-		icon: <PiFire size={20} color='#000' />,
+		icon: <PiFire size={20} />,
 	},
 	{
 		name: 'Music',
-		icon: <PiMusicNote size={20} color='#000' />,
+		icon: <PiMusicNote size={20} />,
 	},
 	{
 		name: 'Podcasts',
-		icon: <PiGooglePodcastsLogo size={20} color='#000' />,
+		icon: <PiGooglePodcastsLogo size={20} />,
 	},
 	{
 		name: 'Arts',
-		icon: <PiImage size={20} color='#000' />,
+		icon: <PiImage size={20} />,
 	},
 	{
 		name: 'Comedy',
-		icon: <BiLaugh size={20} color='#000' />,
+		icon: <BiLaugh size={20} />,
 	},
 	{
 		name: 'Sports',
-		icon: <PiFootball size={20} color='#000' />,
+		icon: <PiFootball size={20} />,
 	},
 	{
 		name: 'Technology',
-		icon: <PiCpu size={20} color='#000' />,
+		icon: <PiCpu size={20} />,
 	},
 	{
 		name: 'Food',
-		icon: <PiHamburger size={20} color='#000' />,
+		icon: <PiHamburger size={20} />,
 	},
 	{
 		name: 'Education',
-		icon: <PiBooks size={20} color='#000' />,
+		icon: <PiBooks size={20} />,
 	},
 	{
 		name: 'Entertainment',
-		icon: <PiFilmSlate size={20} color='#000' />,
+		icon: <PiFilmSlate size={20} />,
 	},
 ];
 

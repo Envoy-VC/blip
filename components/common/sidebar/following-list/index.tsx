@@ -31,12 +31,10 @@ const FollowingList = ({ profileId }: FollowingListProps) => {
 	});
 	return (
 		<>
-			<div className='flex flex-row justify-between items-center mx-4'>
-				<span className='text-[1rem] text-[#525252] font-sans font-medium'>
-					Following
-				</span>
+			<div className='flex flex-row justify-between items-center mx-2'>
+				<span className='text-[1rem] font-sans font-medium'>Following</span>
 				<Button
-					icon={<PiMagnifyingGlass size={20} color='#737373' />}
+					icon={<PiMagnifyingGlass size={20} />}
 					type='text'
 					shape='circle'
 					size='middle'
@@ -66,26 +64,31 @@ const FollowingList = ({ profileId }: FollowingListProps) => {
 					.map((_, i) => <ProfileCardLoader key={i} />)}
 			{followers !== undefined &&
 				followers.map((follower, index) => (
-					<div
+					<Button
 						key={index}
-						className='flex flex-row justify-between items-center gap-3 py-[6px] rounded-xl px-2 hover:!bg-[#0f5fff1c] cursor-pointer group'
+						type='text'
+						size='large'
+						className='flex flex-row justify-between items-center gap-3 py-[6px] rounded-lg px-2 group'
 					>
-						<ProfileAvatar
-							picture={follower.wallet.defaultProfile?.picture || null}
-							size={30}
-							shape='circle'
-							width='30'
-							height='30'
-						/>
-						<span className='text-[1rem] font-semibold font-sans text-[#111827] group-hover:text-primary'>
-							{follower.wallet.defaultProfile?.name?.slice(0, 12) || 'Unknown'}
+						<div className='min-w-[36px] group-hover:border-2 group-hover:border-primary flex justify-center items-center rounded-full'>
+							<ProfileAvatar
+								picture={follower.wallet.defaultProfile?.picture || null}
+								size={30}
+								shape='circle'
+								width='30'
+								height='30'
+								className='m-[1px]'
+							/>
+						</div>
+						<span className='text-[1rem] font-medium font-sans  group-hover:text-primary'>
+							{follower.wallet.defaultProfile?.name?.slice(0, 10) || 'Unknown'}
 						</span>
 						<span className='text-gray-500 text-sm font-sans group-hover:text-primary'>
 							{formatFollowers(
 								follower.wallet.defaultProfile?.stats.totalFollowers || 0
 							)}
 						</span>
-					</div>
+					</Button>
 				))}
 			{hasMore && (
 				<Button

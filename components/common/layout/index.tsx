@@ -1,5 +1,5 @@
 import React from 'react';
-import { ConfigProvider, theme } from 'antd';
+import { ThemeProvider } from 'next-themes';
 
 // wagmi Imports
 import { WagmiConfig, configureChains, createConfig } from 'wagmi';
@@ -13,11 +13,7 @@ import { LensProvider } from '@lens-protocol/react-web';
 import { LensConfig, development, production } from '@lens-protocol/react-web';
 import { bindings as wagmiBindings } from '@lens-protocol/wagmi';
 
-// Components
-import { SEO, Navbar, Sidebar } from '..';
-
 // Utils
-import { Inter } from 'next/font/google';
 import { WALLET_CONNECT_PROJECT_ID, ENVIRONMENT } from '@/config';
 
 // Wagmi Config
@@ -54,44 +50,18 @@ const lensConfig: LensConfig = {
 	environment: production,
 };
 
-// UI
-const inter = Inter({ subsets: ['latin'] });
-const { defaultAlgorithm } = theme;
-
 // Types
 interface Props {
 	children: React.ReactNode;
 }
 
 const Layout = ({ children }: Props) => {
-	const [sidebarOpen, setSidebarOpen] = React.useState<boolean>(true);
 	return (
-		<WagmiConfig config={config}>
-			<LensProvider config={lensConfig}>
-				<ConfigProvider
-					theme={{
-						algorithm: defaultAlgorithm,
-					}}
-				>
-					<>
-						<SEO />
-						<div className={`flex flex-col ${inter.className}`}>
-							<Navbar
-								sidebarOpen={sidebarOpen}
-								setSideBarOpen={setSidebarOpen}
-							/>
-							<div className='flex flex-row'>
-								<Sidebar
-									sidebarOpen={sidebarOpen}
-									setSideBarOpen={setSidebarOpen}
-								/>
-								{children}
-							</div>
-						</div>
-					</>
-				</ConfigProvider>
-			</LensProvider>
-		</WagmiConfig>
+		<ThemeProvider attribute='class'	>
+			<WagmiConfig config={config}>
+				<LensProvider config={lensConfig}>{children}</LensProvider>
+			</WagmiConfig>
+		</ThemeProvider>
 	);
 };
 

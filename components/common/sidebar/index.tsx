@@ -47,7 +47,7 @@ const Sidebar = ({ sidebarOpen }: Props) => {
 						return (
 							<Button
 								key={index}
-								className='flex flex-row gap-6 items-center bg-white hover:!bg-[#0f5fff33]'
+								className='flex flex-row gap-6 items-center'
 								type='text'
 								size='large'
 							>
@@ -82,30 +82,30 @@ const Sidebar = ({ sidebarOpen }: Props) => {
 const SidebarItems: SidebarItem[] = [
 	{
 		name: 'Home',
-		icon: <PiHouseSimple size={20} color='#000' />,
+		icon: <PiHouseSimple size={20} />,
 	},
 	{
 		name: 'Shorts',
-		icon: <PiFilmStrip size={20} color='#000' />,
+		icon: <PiFilmStrip size={20} />,
 	},
 	{
 		name: 'Following',
-		icon: <PiDna size={20} color='#000' />,
+		icon: <PiDna size={20} />,
 	},
 	{
 		name: 'divider',
 	},
 	{
 		name: 'Bookmarks',
-		icon: <PiBookmarksSimple size={20} color='#000' />,
+		icon: <PiBookmarksSimple size={20} />,
 	},
 	{
 		name: 'Your Videos',
-		icon: <PiVideo size={20} color='#000' />,
+		icon: <PiVideo size={20} />,
 	},
 	{
 		name: 'Liked Videos',
-		icon: <PiThumbsUp size={20} color='#000' />,
+		icon: <PiThumbsUp size={20} />,
 	},
 	{
 		name: 'divider',

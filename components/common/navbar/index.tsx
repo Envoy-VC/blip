@@ -20,7 +20,7 @@ interface Props {
 
 const Navbar = ({ sidebarOpen, setSideBarOpen }: Props) => {
 	return (
-		<div className='p-2 px-3 select-none border-b-gray-200 border-2'>
+		<div className='p-2 px-3 select-none border-b-gray-200'>
 			<div className='flex flex-row justify-between items-center'>
 				<div className='flex flex-row gap-0 items-center'>
 					<Button
@@ -56,9 +56,7 @@ const Navbar = ({ sidebarOpen, setSideBarOpen }: Props) => {
 						suffix={
 							<Tooltip
 								title='Voice search coming soon...'
-								color='#fff'
 								overlayInnerStyle={{
-									color: '#000',
 									fontWeight: 600,
 									fontSize: '0.875rem',
 									padding: '0.5rem 1rem',
@@ -73,10 +71,8 @@ const Navbar = ({ sidebarOpen, setSideBarOpen }: Props) => {
 				</ConfigProvider>
 				<div className='flex flex-row items-center gap-4'>
 					<Tooltip
-						color='#fff'
 						title='Feedback / Suggestions'
 						overlayInnerStyle={{
-							color: '#000',
 							fontWeight: 600,
 							fontSize: '0.875rem',
 							padding: '0.5rem 1rem',

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dropdown, Avatar, Divider } from 'antd';
-
+import { useTheme } from 'next-themes';
 import { ProfileOwnedByMe, useWalletLogout } from '@lens-protocol/react-web';
 
 import { ProfileAvatar } from '../..';
@@ -13,6 +13,8 @@ import {
 	PiBookmarksSimple,
 	PiGearSix,
 	PiSignOut,
+	PiCloudSun,
+	PiCloudMoon,
 } from 'react-icons/pi';
 
 // Types
@@ -42,33 +44,32 @@ const DropDownItem = ({ name, icon, handleClick }: DropdownItemProps) => {
 };
 
 const UserDropdown = ({ children, profile }: Props) => {
+	const { theme, setTheme } = useTheme();
 	const { execute: logout } = useWalletLogout();
 	const dropdownItems: DropdownItemProps[] = [
 		{
 			name: 'Your channel',
-			icon: <PiVideo size={24} color='#000' />,
+			icon: <PiVideo size={24} />,
 		},
 		{
 			name: 'Studio',
-			icon: <PiNut size={24} color='#000' />,
+			icon: <PiNut size={24} />,
 		},
 		{
 			name: 'Switch User',
-			icon: <PiUserSwitch size={24} color='#000' />,
+			icon: <PiUserSwitch size={24} />,
 		},
 		{
 			name: 'Bookmarks',
-			icon: <PiBookmarksSimple size={24} color='#000' />,
+			icon: <PiBookmarksSimple size={24} />,
 		},
 		{
 			name: 'Settings',
-			icon: <PiGearSix size={24} color='#000' />,
+			icon: <PiGearSix size={24} />,
 		},
 	];
 
-	const menuStyle: React.CSSProperties = {
-		backgroundColor: '#fff',
-	};
+	const menuStyle: React.CSSProperties = {};
 
 	const contentStyle: React.CSSProperties = {
 		backgroundColor: '#F3F4F6',
@@ -106,14 +107,34 @@ const UserDropdown = ({ children, profile }: Props) => {
 		})),
 		{
 			key: '7',
-			label: <Divider style={{ margin: 0 }} />,
+			label: (
+				<DropDownItem
+					name={
+						theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'
+					}
+					icon={
+						theme === 'dark' ? (
+							<PiCloudSun size={24} />
+						) : (
+							<PiCloudMoon size={24} />
+						)
+					}
+					handleClick={() => {
+						setTheme(theme === 'dark' ? 'light' : 'dark');
+					}}
+				/>
+			),
 		},
 		{
 			key: '8',
+			label: <Divider style={{ margin: 0 }} />,
+		},
+		{
+			key: '9',
 			label: (
 				<DropDownItem
 					name='Sign out'
-					icon={<PiSignOut size={24} color='#000' />}
+					icon={<PiSignOut size={24} />}
 					handleClick={logout}
 				/>
 			),
@@ -124,7 +145,7 @@ const UserDropdown = ({ children, profile }: Props) => {
 			menu={{ items }}
 			trigger={['click']}
 			dropdownRender={(menu) => (
-				<div style={contentStyle}>
+				<div style={contentStyle} className='dark:!bg-transparent'>
 					{React.cloneElement(menu as React.ReactElement, {
 						style: menuStyle,
 					})}

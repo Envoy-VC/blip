@@ -18,9 +18,12 @@ const Notifications = ({ profileId }: NotificationProps) => {
 
 	return (
 		<Badge
-			count={unreadNotificationCount || 0}
+			count={
+				unreadNotificationCount !== undefined ? unreadNotificationCount : 0
+			}
 			color='geekblue'
 			offset={[-6, 6]}
+			classNames={{ indicator: '!text-white' }}
 		>
 			<Button icon={<PiBell size={26} />} type='text' size='large' />
 		</Badge>
