@@ -1,9 +1,34 @@
 import React from 'react';
-import { Input, ConfigProvider, Avatar, Button } from 'antd';
-import { PiCaretDown, PiMagnifyingGlass } from 'react-icons/pi';
+import { Input, ConfigProvider, Skeleton, Button } from 'antd';
 
-const FollowingList = () => {
+import { ProfileId, useProfileFollowers } from '@lens-protocol/react-web';
+
+import { PiCaretDown, PiMagnifyingGlass } from 'react-icons/pi';
+import { ProfileAvatar } from '../..';
+
+import { formatFollowers } from '@/utils';
+
+interface FollowingListProps {
+	profileId: ProfileId;
+}
+
+const ProfileCardLoader = () => (
+	<div className='flex flex-row items-center gap-2 my-1'>
+		<Skeleton.Avatar shape='circle' active size={32} />
+		<Skeleton.Button active size='small' shape='round' block />
+	</div>
+);
+
+const FollowingList = ({ profileId }: FollowingListProps) => {
 	const [searchBarOpen, setSearchBarOpen] = React.useState<boolean>(false);
+	const {
+		data: followers,
+		loading,
+		hasMore,
+	} = useProfileFollowers({
+		profileId,
+		limit: 5,
+	});
 	return (
 		<>
 			<div className='flex flex-row justify-between items-center mx-4'>
@@ -34,35 +59,45 @@ const FollowingList = () => {
 					/>
 				</ConfigProvider>
 			)}
-			{Array(5)
-				.fill(1)
-				.map((user, index) => (
+			{followers === undefined &&
+				loading &&
+				Array(5)
+					.fill(1)
+					.map((_, i) => <ProfileCardLoader key={i} />)}
+			{followers !== undefined &&
+				followers.map((follower, index) => (
 					<div
 						key={index}
 						className='flex flex-row justify-between items-center gap-3 py-[6px] rounded-xl px-2 hover:!bg-[#0f5fff1c] cursor-pointer group'
 					>
-						<Avatar
-							src='https://ik.imagekit.io/lens/media-snapshot/tr:w-60,h-60/76b1f278593adccb1eccdf3d3bce16fd20082a880ba61f73e3f77978e674be60.png'
+						<ProfileAvatar
+							picture={follower.wallet.defaultProfile?.picture || null}
 							size={30}
 							shape='circle'
+							width='30'
+							height='30'
 						/>
 						<span className='text-[1rem] font-semibold font-sans text-[#111827] group-hover:text-primary'>
-							Envoy_
+							{follower.wallet.defaultProfile?.name?.slice(0, 12) || 'Unknown'}
 						</span>
 						<span className='text-gray-500 text-sm font-sans group-hover:text-primary'>
-							1.2k
+							{formatFollowers(
+								follower.wallet.defaultProfile?.stats.totalFollowers || 0
+							)}
 						</span>
 					</div>
 				))}
-			<Button
-				type='link'
-				className='flex flex-row items-center gap-3 py-[6px] rounded-xl px-2'
-			>
-				<PiCaretDown size={20} color='#0F61FF' />
-				<span className='text-[1rem] font-semibold font-sans text-primary'>
-					Show more
-				</span>
-			</Button>
+			{hasMore && (
+				<Button
+					type='link'
+					className='flex flex-row items-center gap-3 py-[6px] rounded-xl px-2'
+				>
+					<PiCaretDown size={20} color='#0F61FF' />
+					<span className='text-[1rem] font-semibold font-sans text-primary'>
+						Show more
+					</span>
+				</Button>
+			)}
 		</>
 	);
 };

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, Divider } from 'antd';
 
+import { useActiveProfile } from '@lens-protocol/react-web';
+
 import FollowingList from './following-list';
 import ExploreList from './explore-list';
 
@@ -25,6 +27,7 @@ export interface SidebarItem {
 }
 
 const Sidebar = ({ sidebarOpen }: Props) => {
+	const { data: profile } = useActiveProfile();
 	return (
 		<div
 			className={`p-4 overflow-y-scroll h-[91.5vh] custom-scrollbar shadow-sm hidden sm:flex ${
@@ -61,8 +64,13 @@ const Sidebar = ({ sidebarOpen }: Props) => {
 				})}
 				{sidebarOpen && (
 					<div className='flex flex-col gap-1 mx-2'>
-						<FollowingList />
-						<Divider style={{ margin: '8px 0px', color: '#000' }} />
+						{profile && (
+							<>
+								<FollowingList profileId={profile.id} />
+								<Divider style={{ margin: '8px 0px', color: '#000' }} />
+							</>
+						)}
+
 						<ExploreList sidebarOpen={sidebarOpen} />
 					</div>
 				)}

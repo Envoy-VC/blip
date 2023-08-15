@@ -16,10 +16,12 @@ const Notifications = ({ profileId }: NotificationProps) => {
 	const { unreadNotificationCount, loading, clear } =
 		useUnreadNotificationCount({ profileId });
 
-	console.log(unreadNotificationCount);
-
 	return (
-		<Badge count={unreadNotificationCount} color='geekblue' offset={[-6, 6]}>
+		<Badge
+			count={unreadNotificationCount || 0}
+			color='geekblue'
+			offset={[-6, 6]}
+		>
 			<Button icon={<PiBell size={26} />} type='text' size='large' />
 		</Badge>
 	);
