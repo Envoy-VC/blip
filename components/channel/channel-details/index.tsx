@@ -18,7 +18,7 @@ interface Props {
 const ChannelDetails = ({ profile }: Props) => {
 	return (
 		<div className='w-full p-4 mx-auto max-w-screen-2xl'>
-			<div className='flex flex-col items-center justify-between gap-8 md:flex-row'>
+			<div className='flex flex-col items-start justify-between gap-8 md:items-center md:flex-row'>
 				<div className='flex flex-row items-center gap-2'>
 					<div className='max-w-[6.75rem]'>
 						<ProfileAvatar
