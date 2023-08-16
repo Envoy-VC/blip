@@ -14,7 +14,6 @@ const Channel: NextPageWithLayout = () => {
 	const { data: profile, loading } = useProfile({
 		handle: (handle?.at(0) as string) || '',
 	});
-	console.log(profile);
 
 	if (profile) {
 		return (
