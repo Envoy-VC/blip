@@ -70,7 +70,7 @@ const FollowingList = ({ profileId }: FollowingListProps) => {
 						size='large'
 						className='flex flex-row justify-between items-center gap-3 py-[6px] rounded-lg px-2 group'
 					>
-						<div className='min-w-[36px] group-hover:border-2 group-hover:border-primary flex justify-center items-center rounded-full'>
+						<div className='min-w-[36px] group-hover:border-2 group-hover:border-primary flex justify-center items-center rounded-full transition-all duration-300 ease-in-out'>
 							<ProfileAvatar
 								picture={follower.wallet.defaultProfile?.picture || null}
 								size={30}
@@ -80,10 +80,10 @@ const FollowingList = ({ profileId }: FollowingListProps) => {
 								className='m-[1px]'
 							/>
 						</div>
-						<span className='text-[1rem] font-medium font-sans  group-hover:text-primary'>
+						<span className='text-[1rem] font-medium font-sans group-hover:text-primary transition-all duration-300 ease-in-out'>
 							{follower.wallet.defaultProfile?.name?.slice(0, 10) || 'Unknown'}
 						</span>
-						<span className='text-gray-500 text-sm font-sans group-hover:text-primary'>
+						<span className='text-gray-500 text-sm font-sans group-hover:text-primary transition-all duration-300 ease-in-out'>
 							{formatFollowers(
 								follower.wallet.defaultProfile?.stats.totalFollowers || 0
 							)}

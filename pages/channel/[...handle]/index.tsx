@@ -5,8 +5,7 @@ import type { NextPageWithLayout } from '../../_app';
 
 import { useRouter } from 'next/router';
 import { useProfile } from '@lens-protocol/react-web';
-import { ChannelCover } from '@/components/channel';
-import { SEO } from '@/components/common';
+import { ChannelCover, ChannelDetails } from '@/components/channel';
 
 const Channel: NextPageWithLayout = () => {
 	const router = useRouter();
@@ -14,12 +13,14 @@ const Channel: NextPageWithLayout = () => {
 	const { data: profile, loading } = useProfile({
 		handle: (handle?.at(0) as string) || '',
 	});
+	console.log(profile);
 
 	if (profile) {
 		return (
 			<div className='flex flex-col w-full'>
 				<ChannelCover profile={profile} />
-				<div>details</div>
+				<ChannelDetails profile={profile} />
+				<div>Videos Section</div>
 			</div>
 		);
 	} else {

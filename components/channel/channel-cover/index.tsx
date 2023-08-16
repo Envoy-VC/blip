@@ -1,6 +1,6 @@
 import React from 'react';
 import { Profile } from '@lens-protocol/react-web';
-import { Image } from 'antd';
+import { Image, Skeleton } from 'antd';
 
 interface Props {
 	profile: Profile;
@@ -17,6 +17,18 @@ const CoverImageRenderer = ({
 				<Image
 					src={coverPicture?.original.url}
 					alt={coverPicture?.original?.altTag || ''}
+					placeholder={<Skeleton.Image className='min-w-full' />}
+					preview={false}
+					className='object-cover min-w-full'
+				/>
+			);
+		}
+		case 'NftImage': {
+			return (
+				<Image
+					src={coverPicture?.uri}
+					alt=''
+					placeholder={<Skeleton.Image className='min-w-full' />}
 					preview={false}
 					className='object-cover min-w-full'
 				/>
@@ -29,7 +41,7 @@ const CoverImageRenderer = ({
 
 const ChannelCover = ({ profile }: Props) => {
 	return (
-		<div className='flex items-center overflow-y-hidden max-h-[20rem] w-full border-2'>
+		<div className='flex items-center overflow-y-hidden max-h-[18rem] w-full'>
 			<CoverImageRenderer coverPicture={profile?.coverPicture} />
 		</div>
 	);
