@@ -41,7 +41,7 @@ const CoverImageRenderer = ({
 
 const ChannelCover = ({ profile }: Props) => {
 	return (
-		<div className='flex items-center overflow-y-hidden max-h-[18rem] w-full'>
+		<div className='flex items-center overflow-y-hidden max-h-[18rem] w-full select-none'>
 			<CoverImageRenderer coverPicture={profile?.coverPicture} />
 		</div>
 	);
