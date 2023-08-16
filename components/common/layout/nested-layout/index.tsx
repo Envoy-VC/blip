@@ -16,7 +16,11 @@ interface Props {
 
 const NestedLayout = ({ children }: Props) => {
 	const [sidebarOpen, setSidebarOpen] = React.useState<boolean>(true);
-	const { theme: appTheme } = useTheme();
+	const { theme: appTheme, setTheme } = useTheme();
+
+	React.useEffect(() => {
+		setTheme('light');
+	}, []);
 
 	return (
 		<ConfigProvider
