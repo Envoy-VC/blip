@@ -82,7 +82,7 @@ const UserDropdown = ({ children, profile }: Props) => {
 		{
 			key: '1',
 			label: (
-				<div className='flex flex-row gap-3 items-center max-w-sm w-full'>
+				<div className='flex flex-row items-center w-full max-w-sm gap-3'>
 					<div className='max-w-[40px]'>
 						<ProfileAvatar
 							picture={profile?.picture || null}

@@ -141,8 +141,8 @@ const WalletModal = ({
 					</div>
 				)}
 				{isConnected && (
-					<div className='flex flex-col gap-2 w-fit my-4'>
-						<div className='text-sm font-sans font-medium my-4'>
+					<div className='flex flex-col gap-2 my-4 w-fit'>
+						<div className='my-4 font-sans text-sm font-medium'>
 							Authenticate with Lens to access features like Uploading videos,
 							Interacting with videos, etc.
 						</div>

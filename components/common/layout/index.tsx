@@ -57,7 +57,7 @@ interface Props {
 
 const Layout = ({ children }: Props) => {
 	return (
-		<ThemeProvider attribute='class'	>
+		<ThemeProvider attribute='class'>
 			<WagmiConfig config={config}>
 				<LensProvider config={lensConfig}>{children}</LensProvider>
 			</WagmiConfig>

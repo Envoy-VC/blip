@@ -30,7 +30,7 @@ const ExploreList = ({ sidebarOpen }: Props) => {
 			{ExploreItems.map((item, index) => (
 				<Button
 					key={index}
-					className='flex flex-row gap-6 items-center'
+					className='flex flex-row items-center gap-6'
 					type='text'
 					size='large'
 				>

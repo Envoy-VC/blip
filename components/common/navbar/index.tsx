@@ -21,8 +21,8 @@ interface Props {
 const Navbar = ({ sidebarOpen, setSideBarOpen }: Props) => {
 	return (
 		<div className='p-2 px-3 select-none border-b-gray-200'>
-			<div className='flex flex-row justify-between items-center'>
-				<div className='flex flex-row gap-0 items-center'>
+			<div className='flex flex-row items-center justify-between'>
+				<div className='flex flex-row items-center gap-0'>
 					<Button
 						type='text'
 						icon={

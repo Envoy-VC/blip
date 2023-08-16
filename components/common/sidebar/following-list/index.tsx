@@ -31,7 +31,7 @@ const FollowingList = ({ profileId }: FollowingListProps) => {
 	});
 	return (
 		<>
-			<div className='flex flex-row justify-between items-center mx-2'>
+			<div className='flex flex-row items-center justify-between mx-2'>
 				<span className='text-[1rem] font-sans font-medium'>Following</span>
 				<Button
 					icon={<PiMagnifyingGlass size={20} />}
@@ -83,7 +83,7 @@ const FollowingList = ({ profileId }: FollowingListProps) => {
 						<span className='text-[1rem] font-medium font-sans group-hover:text-primary transition-all duration-300 ease-in-out'>
 							{follower.wallet.defaultProfile?.name?.slice(0, 10) || 'Unknown'}
 						</span>
-						<span className='text-gray-500 text-sm font-sans group-hover:text-primary transition-all duration-300 ease-in-out'>
+						<span className='font-sans text-sm text-gray-500 transition-all duration-300 ease-in-out group-hover:text-primary'>
 							{formatFollowers(
 								follower.wallet.defaultProfile?.stats.totalFollowers || 0
 							)}
