@@ -22,7 +22,9 @@ const NestedLayout = ({ children }: Props) => {
 		<ConfigProvider
 			theme={{
 				algorithm:
-					appTheme === undefined || appTheme === 'light'
+					appTheme === undefined
+						? defaultAlgorithm
+						: appTheme === 'light'
 						? defaultAlgorithm
 						: darkAlgorithm,
 			}}

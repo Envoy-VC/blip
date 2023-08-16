@@ -19,7 +19,6 @@ const ConnectButton = () => {
 	const { isConnected } = useAccount();
 
 	const { data: profile } = useActiveProfile();
-	console.log(profile);
 
 	if (wallet === null || wallet === undefined || !isConnected) {
 		return (
