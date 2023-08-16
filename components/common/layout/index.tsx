@@ -1,6 +1,9 @@
 import React from 'react';
 import { ThemeProvider } from 'next-themes';
 
+// Apollo Client
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+
 // wagmi Imports
 import { WagmiConfig, configureChains, createConfig } from 'wagmi';
 import { polygon, polygonMumbai } from 'wagmi/chains';
@@ -15,6 +18,12 @@ import { bindings as wagmiBindings } from '@lens-protocol/wagmi';
 
 // Utils
 import { WALLET_CONNECT_PROJECT_ID, ENVIRONMENT } from '@/config';
+
+// Apollo Config
+const client = new ApolloClient({
+	uri: 'https://api.lens.dev/',
+	cache: new InMemoryCache(),
+});
 
 // Wagmi Config
 const { publicClient, webSocketPublicClient } = configureChains(
@@ -59,7 +68,9 @@ const Layout = ({ children }: Props) => {
 	return (
 		<ThemeProvider attribute='class'>
 			<WagmiConfig config={config}>
-				<LensProvider config={lensConfig}>{children}</LensProvider>
+				<ApolloProvider client={client}>
+					<LensProvider config={lensConfig}>{children}</LensProvider>
+				</ApolloProvider>
 			</WagmiConfig>
 		</ThemeProvider>
 	);

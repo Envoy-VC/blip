@@ -4,6 +4,31 @@ import { Menu, ConfigProvider } from 'antd';
 // Types
 import type { MenuProps } from 'antd';
 
+interface MenuItemProps {
+	label: string;
+	handleClick?: () => void;
+}
+
+const MenuItem = ({ label, handleClick }: MenuItemProps) => {
+	return (
+		<div
+			className='px-5 font-medium hover:bg-[rgba(15,97,255,0.1)]  rounded-t-lg'
+			onClick={handleClick}
+		>
+			{label}
+		</div>
+	);
+};
+
+const items: MenuItemProps[] = [
+	{ label: 'Home' },
+	{ label: 'Videos' },
+	{ label: 'Shorts' },
+	{ label: 'Community' },
+	{ label: 'Channels' },
+	{ label: 'About' },
+];
+
 const ChannelNavigation = () => {
 	const [selectedKey, setSelectedKey] = React.useState<string>('home');
 
@@ -31,38 +56,16 @@ const ChannelNavigation = () => {
 				selectedKeys={[selectedKey]}
 				defaultSelectedKeys={['home']}
 				mode='horizontal'
-				items={NavigationItems}
+				items={items.map((item, index) => {
+					return {
+						key: item.label.toLowerCase(),
+						label: <MenuItem key={index} label={item.label} />,
+					};
+				})}
 				style={{ flex: 'auto', minWidth: 0 }}
 			/>
 		</ConfigProvider>
 	);
 };
-
-const NavigationItems: MenuProps['items'] = [
-	{
-		label: <div className='px-5 font-medium'>Home</div>,
-		key: 'home',
-	},
-	{
-		label: <div className='px-5 font-medium'>Videos</div>,
-		key: 'videos',
-	},
-	{
-		label: <div className='px-5 font-medium'>Shorts</div>,
-		key: 'shorts',
-	},
-	{
-		label: <div className='px-5 font-medium'>Community</div>,
-		key: 'community',
-	},
-	{
-		label: <div className='px-5 font-medium'>Channels</div>,
-		key: 'channels',
-	},
-	{
-		label: <div className='px-5 font-medium'>About</div>,
-		key: 'about',
-	},
-];
 
 export default ChannelNavigation;

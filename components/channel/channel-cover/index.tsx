@@ -35,7 +35,9 @@ const CoverImageRenderer = ({
 			);
 		}
 		default:
-			return <Image src={''} alt='aaaa' />;
+			return (
+				<Skeleton.Image className='object-cover min-w-full min-h-[18rem]' />
+			);
 	}
 };
 
