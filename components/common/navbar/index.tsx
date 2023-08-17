@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button, ConfigProvider, Input, Tooltip } from 'antd';
 
 // Components
@@ -71,19 +72,24 @@ const Navbar = ({ sidebarOpen, setSideBarOpen }: Props) => {
 				</ConfigProvider>
 				<div className='flex flex-row items-center gap-4'>
 					<Tooltip
-						title='Feedback / Suggestions'
+						title='Roadmap / Suggestions'
 						overlayInnerStyle={{
 							fontWeight: 600,
 							fontSize: '0.875rem',
 							padding: '0.5rem 1rem',
 						}}
 					>
-						<Button
-							icon={<PiMapTrifold size={26} />}
-							type='text'
-							shape='circle'
-							size='large'
-						/>
+						<Link
+							href='https://github.com/users/Envoy-VC/projects/1?pane=issue&itemId=35752665'
+							target='_blank'
+						>
+							<Button
+								icon={<PiMapTrifold size={26} />}
+								type='text'
+								shape='circle'
+								size='large'
+							/>
+						</Link>
 					</Tooltip>
 					<ConnectButton />
 				</div>
