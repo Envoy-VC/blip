@@ -22,7 +22,6 @@ const MenuItem = ({ label, handleClick }: MenuItemProps) => {
 
 const items: MenuItemProps[] = [
 	{ label: 'Home' },
-	{ label: 'Videos' },
 	{ label: 'Shorts' },
 	{ label: 'Community' },
 	{ label: 'Channels' },
