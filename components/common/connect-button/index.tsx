@@ -16,7 +16,6 @@ const ConnectButton = () => {
 	const [walletModalOpen, setWalletModalOpen] = React.useState<boolean>(false);
 	const { data: wallet } = useActiveWallet();
 	const [isLoggingIn, setIsLoggingIn] = React.useState<boolean>(false);
-	const { isConnected } = useAccount();
 
 	const { data: profile } = useActiveProfile();
 
