@@ -4,7 +4,7 @@ import NestedLayout from '@/components/common/layout/nested-layout';
 import type { NextPageWithLayout } from '../../_app';
 
 import { useRouter } from 'next/router';
-import { useProfile } from '@lens-protocol/react-web';
+import { useProfile, useActiveProfile } from '@lens-protocol/react-web';
 import { Skeleton } from 'antd';
 
 import { ChannelPage } from '@/sections/channel';
@@ -18,8 +18,10 @@ import {
 const Channel: NextPageWithLayout = () => {
 	const router = useRouter();
 	const { handle } = router.query;
+	const { data: activeProfile } = useActiveProfile();
 	const { data: profile, loading } = useProfile({
 		handle: (handle?.at(0) as string) || '',
+		observerId: activeProfile?.id,
 	});
 
 	if (profile) {

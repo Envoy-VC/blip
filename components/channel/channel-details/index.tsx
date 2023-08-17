@@ -9,7 +9,7 @@ import { ProfileAvatar } from '@/components/common';
 import { formatFollowers } from '@/utils';
 
 // Icons
-import { PiConfetti, PiPlus } from 'react-icons/pi';
+import { PiCheck, PiConfetti, PiPlus } from 'react-icons/pi';
 
 interface Props {
 	profile: Profile;
@@ -34,10 +34,10 @@ const ChannelDetails = ({ profile }: Props) => {
 						<div className='flex flex-row text-[#aaa] font-medium font-sans gap-2 text-sm sm:text-[1rem]'>
 							<span>@{profile?.handle}</span>
 							<span>
-								{formatFollowers(profile?.stats?.totalFollowers || 0)}
+								{formatFollowers(profile?.stats?.totalFollowers || 0)} followers
 							</span>
 							<span>
-								{formatFollowers(profile?.stats?.totalPosts || 0)} videos
+								{formatFollowers(profile?.stats?.totalPosts || 0)} posts
 							</span>
 						</div>
 						<div className='flex flex-row gap-2 font-medium'>
@@ -52,8 +52,17 @@ const ChannelDetails = ({ profile }: Props) => {
 						className='bg-primary hover:!bg-secondary text-white hover:!text-white flex flex-row items-center justify-center gap-2'
 						size='large'
 					>
-						<PiPlus size={24} />
-						Follow
+						{profile.isFollowedByMe ? (
+							<div className='flex flex-row gap-2 items-center justify-center'>
+								<PiCheck size={24} />
+								Following
+							</div>
+						) : (
+							<div className='flex flex-row gap-2 items-center justify-center'>
+								<PiPlus size={24} />
+								Follow
+							</div>
+						)}
 					</Button>
 					<Button
 						type='default'
