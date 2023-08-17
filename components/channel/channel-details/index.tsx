@@ -56,10 +56,10 @@ const ChannelDetails = ({ profile }: Props) => {
 						Follow
 					</Button>
 					<Button
-						type='text'
+						type='default'
 						shape='round'
 						size='large'
-						className='flex flex-row items-center justify-center gap-2'
+						className='flex flex-row items-center justify-center gap-2 hover:!text-inherit'
 					>
 						<PiConfetti size={24} />
 						Say thanks
