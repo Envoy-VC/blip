@@ -9,7 +9,7 @@ import UserDropdown from './user-dropdown';
 import WalletModal from './wallet-modal';
 import { Notifications } from '@/components/common';
 
-import { PiBell, PiVideoCamera } from 'react-icons/pi';
+import { PiVideoCamera } from 'react-icons/pi';
 import { ProfileAvatar } from '..';
 
 const ConnectButton = () => {
@@ -20,7 +20,7 @@ const ConnectButton = () => {
 
 	const { data: profile } = useActiveProfile();
 
-	if (wallet === null || wallet === undefined || !isConnected) {
+	if (wallet === null || wallet === undefined ) {
 		return (
 			<>
 				<ConfigProvider
