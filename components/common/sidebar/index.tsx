@@ -30,7 +30,7 @@ const Sidebar = ({ sidebarOpen }: Props) => {
 	const { data: profile } = useActiveProfile();
 	return (
 		<div
-			className={`p-4 overflow-y-scroll h-[91.5vh] custom-scrollbar shadow-sm hidden sm:flex ${
+			className={`p-4 overflow-y-scroll h-[91.5vh] custom-scrollbar shadow-sm hidden sm:flex pr-6 ${
 				sidebarOpen && 'min-w-[14rem]'
 			}`}
 		>

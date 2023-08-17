@@ -36,7 +36,9 @@ const VideoCard = ({ publication, isOnChannelPage }: Props) => {
 						</span>
 					)}
 					<div className='flex flex-row items-center gap-2 text-[#a0a0a0] font-medium text-sm'>
-						<span>{formatFollowers(video?.stats?.totalUpvotes || 0)} likes</span>
+						<span>
+							{formatFollowers(video?.stats?.totalUpvotes || 0)} likes
+						</span>
 						<span className='w-1 h-1 rounded-full bg-[#aaa]'></span>
 						<span>{ISOTimeToTimeAgo(video?.createdAt || '')}</span>
 					</div>
