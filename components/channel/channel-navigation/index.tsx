@@ -3,11 +3,16 @@ import { Menu, ConfigProvider } from 'antd';
 
 // Types
 import type { MenuProps } from 'antd';
+import { MenuItemProps, MenuItemType } from '@/sections/channel/channel-page';
 
-interface MenuItemProps {
-	label: string;
-	handleClick?: () => void;
-}
+const items: MenuItemProps[] = [
+	{ label: 'Home' },
+	{ label: 'Videos' },
+	{ label: 'Shorts' },
+	{ label: 'Community' },
+	{ label: 'Channels' },
+	{ label: 'About' },
+];
 
 const MenuItem = ({ label, handleClick }: MenuItemProps) => {
 	return (
@@ -20,20 +25,15 @@ const MenuItem = ({ label, handleClick }: MenuItemProps) => {
 	);
 };
 
-const items: MenuItemProps[] = [
-	{ label: 'Home' },
-	{ label: 'Shorts' },
-	{ label: 'Community' },
-	{ label: 'Channels' },
-	{ label: 'About' },
-];
+interface Props {
+	activeMenuItem: MenuItemType;
+	setActiveMenuItem: React.Dispatch<React.SetStateAction<MenuItemType>>;
+}
 
-const ChannelNavigation = () => {
-	const [selectedKey, setSelectedKey] = React.useState<string>('home');
-
+const ChannelNavigation = ({ activeMenuItem, setActiveMenuItem }: Props) => {
 	const onClick: MenuProps['onClick'] = (e) => {
 		console.log('click ', e);
-		setSelectedKey(e.key);
+		setActiveMenuItem(e.key as MenuItemType);
 	};
 
 	return (
@@ -52,7 +52,7 @@ const ChannelNavigation = () => {
 		>
 			<Menu
 				onClick={onClick}
-				selectedKeys={[selectedKey]}
+				selectedKeys={[activeMenuItem]}
 				defaultSelectedKeys={['home']}
 				mode='horizontal'
 				items={items.map((item, index) => {
