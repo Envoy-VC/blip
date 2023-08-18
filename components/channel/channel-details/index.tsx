@@ -40,8 +40,8 @@ const ChannelDetails = ({ profile }: Props) => {
 								{formatFollowers(profile?.stats?.totalPosts || 0)} posts
 							</span>
 						</div>
-						<div className='flex flex-row gap-2 font-medium'>
-							<div>{profile?.bio?.slice(0, 50)}</div>
+						<div className='flex flex-row gap-2 font-medium max-w-[324px]'>
+							<p className='truncate'>{profile?.bio}</p>
 						</div>
 					</div>
 				</div>
