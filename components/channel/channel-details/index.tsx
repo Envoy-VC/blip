@@ -10,6 +10,7 @@ import { formatFollowers } from '@/utils';
 
 // Icons
 import { PiCheck, PiConfetti, PiPlus } from 'react-icons/pi';
+import { Nixie_One } from 'next/font/google';
 
 interface Props {
 	profile: Profile;
@@ -31,7 +32,7 @@ const ChannelDetails = ({ profile }: Props) => {
 						<span className='text-2xl font-semibold'>
 							{profile?.name || ''}
 						</span>
-						<div className='flex flex-row text-[#aaa] font-medium font-sans gap-2 text-sm sm:text-[1rem]'>
+						<div className='flex flex-row text-[#aaa] font-medium font-sans gap-2 text-[0.8rem] sm:text-[1rem]'>
 							<span>@{profile?.handle}</span>
 							<span>
 								{formatFollowers(profile?.stats?.totalFollowers || 0)} followers
@@ -40,8 +41,12 @@ const ChannelDetails = ({ profile }: Props) => {
 								{formatFollowers(profile?.stats?.totalPosts || 0)} posts
 							</span>
 						</div>
-						<div className='flex flex-row gap-2 font-medium max-w-[324px]'>
-							<p className='truncate'>{profile?.bio}</p>
+						<div className='flex flex-row gap-2 font-medium max-w-[256px] sm:max-w-324px]'>
+							<p>
+								{profile?.bio?.length || 0 > 48
+									? profile?.bio?.slice(0, 48) + '...'
+									: profile?.bio}
+							</p>
 						</div>
 					</div>
 				</div>

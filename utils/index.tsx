@@ -45,3 +45,13 @@ export const ISOTimeToTimeAgo = (ISOTime: string) => {
 	}
 	return 'just now';
 };
+
+export const getUrlFromURI = (uri: string) => {
+	if (uri.startsWith('ipfs://')) {
+		return `https://ipfs.io/ipfs/${uri.slice(7)}`;
+	} else if (uri.startsWith('ar://')) {
+		return `https://arweave.net/${uri.slice(5)}`;
+	} else {
+		return uri;
+	}
+};
