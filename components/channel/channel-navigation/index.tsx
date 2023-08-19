@@ -7,7 +7,6 @@ import { MenuItemProps, MenuItemType } from '@/sections/channel/channel-page';
 
 const items: MenuItemProps[] = [
 	{ label: 'Home' },
-	{ label: 'Videos' },
 	{ label: 'Shorts' },
 	{ label: 'Community' },
 	{ label: 'Channels' },

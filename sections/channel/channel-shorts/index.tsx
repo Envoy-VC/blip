@@ -35,22 +35,24 @@ const ChannelShorts = ({ profile }: Props) => {
 		},
 	});
 
-	const [filteredVideos, setfilteredVideos] = React.useState<AnyPublication[]>(
+	const [filteredVideos, setFilteredVideos] = React.useState<AnyPublication[]>(
 		[]
 	);
 
 	React.useMemo(() => {
-		const filteredVideos = videos!.filter((video) => {
+		const filteredVideos = (videos || []).filter((video) => {
 			if (video.__typename === 'Post') {
 				let tag = video?.metadata?.attributes.find(
 					(attr) => attr?.traitType === 'durationInSeconds'
 				);
 				if (tag !== undefined) {
-					if (parseFloat(tag.value || '0') < 60) return video;
+					if (parseFloat(tag.value || '0') < 60) {
+						return video;
+					}
 				}
 			}
 		});
-		setfilteredVideos(filteredVideos);
+		setFilteredVideos(filteredVideos);
 	}, [videos]);
 
 	return (
