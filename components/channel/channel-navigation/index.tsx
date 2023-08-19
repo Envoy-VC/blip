@@ -3,7 +3,7 @@ import { Menu, ConfigProvider } from 'antd';
 
 // Types
 import type { MenuProps } from 'antd';
-import { MenuItemProps, MenuItemType } from '@/sections/channel/channel-page';
+import { MenuItemProps, MenuItemType } from '@/sections/channel';
 
 const items: MenuItemProps[] = [
 	{ label: 'Home' },
