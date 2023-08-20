@@ -1,10 +1,15 @@
 import React from 'react';
+import { Button } from 'antd';
 import { Profile } from '@lens-protocol/react-web';
 
+// Components
+import { ShareButton } from '@/components/common';
+
+// Utils
 import { formatFollowers } from '@/utils';
 
-import { PiFlagBold, PiShareFatBold } from 'react-icons/pi';
-import { Button } from 'antd';
+// Icons
+import { PiFlagBold } from 'react-icons/pi';
 
 interface Props {
 	profile: Profile;
@@ -12,6 +17,7 @@ interface Props {
 
 const ChannelStatistics = ({ profile }: Props) => {
 	const {
+		name,
 		stats: { totalPosts, totalFollowers },
 	} = profile;
 	return (
@@ -34,10 +40,13 @@ const ChannelStatistics = ({ profile }: Props) => {
 						icon={<PiFlagBold size='20' color='#7e7e7e' />}
 						className='flex items-center justify-center'
 					/>
-					<Button
-						type='text'
-						icon={<PiShareFatBold size='20' color='#7e7e7e' />}
-						className='flex items-center justify-center'
+					<ShareButton
+						content={{
+							url: window.location.href,
+							title: `Hey check out ${name}'s channel on Blip`,
+							emailSubject: `Hey check out ${name}'s channel on Blip`,
+							twitterHashtags: ['blip'],
+						}}
 					/>
 				</div>
 			</div>

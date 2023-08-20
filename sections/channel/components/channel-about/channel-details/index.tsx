@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'antd';
 import { Profile } from '@lens-protocol/react-web';
+import toast from 'react-hot-toast';
 
 // Icons
 import {
@@ -25,7 +26,11 @@ const ChannelDetails = ({ profile }: Props) => {
 	].filter((i) => i);
 
 	const copyText = (content: string) => {
-		navigator.clipboard.writeText(content);
+		navigator.clipboard.writeText(content).then(() =>
+			toast('Copied to clipboard', {
+				icon: '📋',
+			})
+		);
 	};
 
 	console.log(attributes);

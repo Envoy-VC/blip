@@ -1,6 +1,7 @@
 import React from 'react';
 import { ConfigProvider, theme } from 'antd';
 import { useTheme } from 'next-themes';
+import { Toaster } from 'react-hot-toast';
 
 // Components
 import { SEO, Navbar, Sidebar } from '@/components/common';
@@ -46,6 +47,7 @@ const NestedLayout = ({ children }: Props) => {
 						/>
 						{children}
 					</div>
+					<Toaster position='bottom-left' />
 				</div>
 			</ConfigProvider>
 		);
