@@ -22,7 +22,7 @@ const FollowingChannels = ({ profile }: Props) => {
 		next,
 	} = useProfileFollowing({
 		walletAddress: profile?.ownedBy,
-		limit: 12,
+		limit: 30,
 	});
 	if (!!following) {
 		return (

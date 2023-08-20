@@ -15,34 +15,40 @@ interface Props {
 }
 
 const NestedLayout = ({ children }: Props) => {
+	const [pageLoaded, setPageLoaded] = React.useState<boolean>(false);
 	const [sidebarOpen, setSidebarOpen] = React.useState<boolean>(true);
 	const { theme: appTheme, setTheme } = useTheme();
 
 	React.useEffect(() => {
 		setTheme('light');
+		setPageLoaded(true);
 	}, []);
 
-	return (
-		<ConfigProvider
-			theme={{
-				algorithm:
-					appTheme === undefined
-						? defaultAlgorithm
-						: appTheme === 'light'
-						? defaultAlgorithm
-						: darkAlgorithm,
-			}}
-		>
-			<SEO />
-			<div className={`flex flex-col ${inter.className}`}>
-				<Navbar sidebarOpen={sidebarOpen} setSideBarOpen={setSidebarOpen} />
-				<div className='flex flex-row'>
-					<Sidebar sidebarOpen={sidebarOpen} setSideBarOpen={setSidebarOpen} />
-					{children}
+	if (pageLoaded)
+		return (
+			<ConfigProvider
+				theme={{
+					algorithm:
+						appTheme === undefined
+							? defaultAlgorithm
+							: appTheme === 'light'
+							? defaultAlgorithm
+							: darkAlgorithm,
+				}}
+			>
+				<SEO />
+				<div className={`flex flex-col ${inter.className}`}>
+					<Navbar sidebarOpen={sidebarOpen} setSideBarOpen={setSidebarOpen} />
+					<div className='flex flex-row'>
+						<Sidebar
+							sidebarOpen={sidebarOpen}
+							setSideBarOpen={setSidebarOpen}
+						/>
+						{children}
+					</div>
 				</div>
-			</div>
-		</ConfigProvider>
-	);
+			</ConfigProvider>
+		);
 };
 
 export default NestedLayout;
