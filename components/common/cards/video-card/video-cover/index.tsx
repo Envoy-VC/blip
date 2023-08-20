@@ -2,7 +2,7 @@ import React from 'react';
 import { Post } from '@lens-protocol/react-web';
 import { Image, ImageProps } from 'antd';
 
-import { getUrlFromURI } from '@/utils';
+import { getUrlFromURI, formatVideoDuration } from '@/utils';
 import VideoFallbackImage from '@/public/video-fallback.png';
 
 interface Props extends ImageProps {
@@ -53,9 +53,21 @@ const VideoCover = ({ video, ...props }: Props) => {
 			}
 		}
 	};
+	let videoDuration = video?.metadata?.attributes.find((attr) => {
+		if (attr?.traitType === 'durationInSeconds') {
+			return attr;
+		}
+	});
 	let { src, alt } = getImageData();
 	return (
-		<Image alt={alt} src={src} fallback={VideoFallbackImage.src} {...props} />
+		<div className='relative'>
+			{!!videoDuration && videoDuration?.value && (
+				<div className='absolute bottom-0 right-0 z-10 m-3 rounded-lg px-1 bg-[#d3d3d38e] font-medium text-sm font-sans text-[#1d1d1d]'>
+					{formatVideoDuration(videoDuration?.value)}
+				</div>
+			)}
+			<Image alt={alt} src={src} fallback={VideoFallbackImage.src} {...props} />
+		</div>
 	);
 };
 

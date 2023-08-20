@@ -19,7 +19,7 @@ const VideoCard = ({ publication, isOnChannelPage }: Props) => {
 			<VideoCover
 				video={video}
 				height={224}
-				className='object-cover rounded-lg'
+				className='rounded-lg object-cover !w-[500px]'
 				preview={false}
 			/>
 			<div className='flex flex-row items-start gap-3 mt-2'>
