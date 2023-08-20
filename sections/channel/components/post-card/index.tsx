@@ -23,6 +23,7 @@ const PostCard = ({ post }: Props) => {
 		metadata: { content, image, media },
 		stats: { totalUpvotes, totalAmountOfComments, totalAmountOfMirrors },
 	} = post;
+	const [showMoreActive, setShowMoreActive] = React.useState(false);
 	return (
 		<div className='max-w-screen-md rounded-xl shadow-sm p-4 bg-[#dadada1c]'>
 			<div className='flex flex-col gap-1'>
@@ -40,10 +41,22 @@ const PostCard = ({ post }: Props) => {
 					</div>
 					<Button icon={<PiDotsThreeVerticalBold size={24} />} type='text' />
 				</div>
-				<div className='flex flex-col gap-2 max-w-lg'>
+				<div className='flex flex-col gap-2 max-w-lg items-start'>
 					<p className='font-sans font-medium text-[1rem] whitespace-pre-line'>
-						{content}
+						{content && content.length > 250 && !showMoreActive
+							? content.slice(0, 250) + '...'
+							: content}
 					</p>
+					{(content || '')?.length > 250 && (
+						<Button
+							type='link'
+							onClick={() => setShowMoreActive(!showMoreActive)}
+							className='!px-0'
+						>
+							{showMoreActive ? 'Show less' : 'Show more'}
+						</Button>
+					)}
+
 					<div className='flex flex-row gap-2'>
 						<Image.PreviewGroup>
 							{media.length > 0 &&
