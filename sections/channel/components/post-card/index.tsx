@@ -41,8 +41,8 @@ const PostCard = ({ post }: Props) => {
 					</div>
 					<Button icon={<PiDotsThreeVerticalBold size={24} />} type='text' />
 				</div>
-				<div className='flex flex-col gap-2 max-w-lg items-start'>
-					<p className='font-sans font-medium text-[1rem] whitespace-pre-line'>
+				<div className='flex flex-col gap-2 max-w-xl items-start '>
+					<p className='font-sans font-medium text-[1rem] whitespace-pre-wrap break-all'>
 						{content && content.length > 250 && !showMoreActive
 							? content.slice(0, 250) + '...'
 							: content}
