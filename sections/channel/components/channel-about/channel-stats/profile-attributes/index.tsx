@@ -55,7 +55,7 @@ const ProfileAttributes = ({ attributes, type }: Props) => {
 			{attributeData.type === 'link' && (
 				<Link
 					className='font-sans hover:underline hover:text-primary'
-					href={getLink()}
+					href={getLink() || ''}
 					target='_blank'
 				>
 					{content}
