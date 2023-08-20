@@ -13,8 +13,15 @@ const config: Config = {
 				primary: '#0F61FF',
 				secondary: '#557AFF',
 			},
+			aspectRatio: {
+				'9/16': '9 / 14',
+			},
 		},
+		corePlugins: {
+			aspectRatio: false,
+		},
+		plugins: [require('@tailwindcss/aspect-ratio')],
 	},
-	plugins: [],
 };
+
 export default config;

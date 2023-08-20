@@ -44,18 +44,38 @@ const PostCard = ({ post }: Props) => {
 					<p className='font-sans font-medium text-[1rem] whitespace-pre-line'>
 						{content}
 					</p>
-					{!!image && (
-						<Image
-							src={getUrlFromURI(image)}
-							alt={
-								media?.at(0)?.optimized?.altTag ||
-								media?.at(0)?.original?.altTag ||
-								''
-							}
-							preview={false}
-							className='max-w-md my-4 rounded-lg'
-						/>
-					)}
+					<div className='flex flex-row gap-2'>
+						<Image.PreviewGroup>
+							{media.length > 0 &&
+								media
+									.filter((m) => m?.original.mimeType?.includes('image'))
+									.map((media, i) => {
+										if (!!media.optimized?.cover) {
+											let ele = media.optimized;
+											return (
+												<Image
+													key={i}
+													src={getUrlFromURI(ele?.cover || '')}
+													alt={ele?.altTag || ''}
+													preview={false}
+													className='max-w-md my-4 rounded-lg'
+												/>
+											);
+										} else if (!!media.original?.cover) {
+											let ele = media.original;
+											return (
+												<Image
+													key={i}
+													src={getUrlFromURI(ele?.cover || '')}
+													alt={ele?.altTag || ''}
+													preview={false}
+													className='max-w-md my-4 rounded-lg'
+												/>
+											);
+										}
+									})}
+						</Image.PreviewGroup>
+					</div>
 				</div>
 				<div className='flex flex-row items-center justify-between text-sm font-medium text-[#aaa]'>
 					<div className='flex flex-row gap-1 items-center'>

@@ -80,7 +80,7 @@ const ChannelShorts = ({ profile }: Props) => {
 					}
 				>
 					<div className='grid grid-cols-1 gap-4 my-12 2xl:grid-cols-4 md:grid-cols-2 xl:grid-cols-3'>
-						{filteredVideos.map((video, i) => (
+						{filteredVideos.slice(0, 2).map((video, i) => (
 							<VideoCard key={i} publication={video} isOnChannelPage />
 						))}
 					</div>
