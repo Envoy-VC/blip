@@ -8,6 +8,7 @@ import {
 	ChannelHome,
 	ChannelShorts,
 	FollowingChannels,
+	ChannelAbout,
 } from './components';
 interface Props {
 	profile: Profile;
@@ -43,6 +44,7 @@ const ChannelPage = ({ profile }: Props) => {
 				{activeMenuItem === 'following' && (
 					<FollowingChannels profile={profile} />
 				)}
+				{activeMenuItem === 'about' && <ChannelAbout profile={profile} />}
 			</div>
 		</div>
 	);
