@@ -57,32 +57,31 @@ const PostCard = ({ post }: Props) => {
 						</Button>
 					)}
 
-					<div className='flex flex-row gap-2'>
+					<div className='grid grid-cols-2 gap-4'>
 						<Image.PreviewGroup>
 							{media.length > 0 &&
 								media
-									.filter((m) => m?.original.mimeType?.includes('image'))
+									.filter((m) => m?.original.mimeType?.startsWith('image'))
 									.map((media, i) => {
-										if (!!media.optimized?.cover) {
+										console.log(media);
+										if (!!media.optimized?.url) {
 											let ele = media.optimized;
 											return (
 												<Image
 													key={i}
-													src={getUrlFromURI(ele?.cover || '')}
+													src={getUrlFromURI(ele?.url || '')}
 													alt={ele?.altTag || ''}
-													preview={false}
-													className='max-w-md my-4 rounded-lg'
+													className='rounded-lg aspect-square object-cover max-w-[256px]'
 												/>
 											);
-										} else if (!!media.original?.cover) {
+										} else if (!!media.original?.url) {
 											let ele = media.original;
 											return (
 												<Image
 													key={i}
-													src={getUrlFromURI(ele?.cover || '')}
+													src={getUrlFromURI(ele?.url || '')}
 													alt={ele?.altTag || ''}
-													preview={false}
-													className='max-w-md my-4 rounded-lg'
+													className='aspect-square object-cover rounded-lg max-w-[256px]'
 												/>
 											);
 										}
