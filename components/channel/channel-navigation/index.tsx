@@ -9,7 +9,7 @@ const items: MenuItemProps[] = [
 	{ label: 'Home' },
 	{ label: 'Shorts' },
 	{ label: 'Community' },
-	{ label: 'Channels' },
+	{ label: 'Following' },
 	{ label: 'About' },
 ];
 

@@ -3,6 +3,7 @@ import { Avatar, AvatarProps, Skeleton } from 'antd';
 import { Profile } from '@lens-protocol/react-web';
 
 import { PiUser } from 'react-icons/pi';
+import { AvatarSize } from 'antd/es/avatar/AvatarContext';
 
 interface Props extends AvatarProps {
 	picture: Profile['picture'];
@@ -74,12 +75,17 @@ const NFTImageRenderer = ({
 	return <Avatar src={data} {...props} />;
 };
 
-const FallbackProfilePicture = () => {
-	return <PiUser size={32} />;
+interface FallbackProfilePictureProps {
+	size?: AvatarSize;
+}
+
+const FallbackProfilePicture = ({ size }: FallbackProfilePictureProps) => {
+	return <Avatar icon={<PiUser size='96' />} size={size} />;
 };
 
 const ProfileAvatar = ({ picture, width, height, ...props }: Props) => {
-	if (!picture) return <FallbackProfilePicture />;
+	const { size } = props;
+	if (!picture) return <FallbackProfilePicture size={size} />;
 	switch (picture.__typename) {
 		case 'MediaSet':
 			return (
@@ -90,7 +96,7 @@ const ProfileAvatar = ({ picture, width, height, ...props }: Props) => {
 		case 'NftImage':
 			return <NFTImageRenderer uri={picture.uri} {...props} />;
 		default:
-			return <FallbackProfilePicture />;
+			return <FallbackProfilePicture size={size} />;
 	}
 };
 

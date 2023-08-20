@@ -3,7 +3,12 @@ import { Profile } from '@lens-protocol/react-web';
 
 // Components
 import { ChannelNavigation } from '@/components/channel';
-import { ChannelCommunity, ChannelHome, ChannelShorts } from './components';
+import {
+	ChannelCommunity,
+	ChannelHome,
+	ChannelShorts,
+	FollowingChannels,
+} from './components';
 interface Props {
 	profile: Profile;
 }
@@ -12,7 +17,7 @@ export type MenuItemType =
 	| 'home'
 	| 'shorts'
 	| 'community'
-	| 'channels'
+	| 'following'
 	| 'about';
 
 export interface MenuItemProps {
@@ -34,6 +39,9 @@ const ChannelPage = ({ profile }: Props) => {
 				{activeMenuItem === 'shorts' && <ChannelShorts profile={profile} />}
 				{activeMenuItem === 'community' && (
 					<ChannelCommunity profile={profile} />
+				)}
+				{activeMenuItem === 'following' && (
+					<FollowingChannels profile={profile} />
 				)}
 			</div>
 		</div>
