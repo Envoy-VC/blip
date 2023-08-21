@@ -25,7 +25,7 @@ const PostCard = ({ post }: Props) => {
 	} = post;
 	const [showMoreActive, setShowMoreActive] = React.useState(false);
 	return (
-		<div className='max-w-screen-md rounded-xl shadow-sm p-4 bg-[#dadada1c]'>
+		<div className='max-w-screen-md rounded-xl shadow- p-4 postContainer'>
 			<div className='flex flex-col gap-1'>
 				<div className='flex flex-row justify-between items-center'>
 					<div className='flex flex-row gap-2'>
@@ -42,7 +42,7 @@ const PostCard = ({ post }: Props) => {
 					<Button icon={<PiDotsThreeVerticalBold size={24} />} type='text' />
 				</div>
 				<div className='flex flex-col gap-2 max-w-xl items-start '>
-					<p className='font-sans font-medium text-[1rem] whitespace-pre-wrap break-all'>
+					<p className='font-sans font-medium text-[1rem] whitespace-pre-wrap break-words max-w-xs sm:max-w-xl'>
 						{content && content.length > 250 && !showMoreActive
 							? content.slice(0, 250) + '...'
 							: content}
