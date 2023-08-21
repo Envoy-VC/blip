@@ -9,7 +9,7 @@ import {
 	ChannelShorts,
 	FollowingChannels,
 	ChannelAbout,
-} from './components';
+} from '@/components/channel';
 interface Props {
 	profile: Profile;
 }

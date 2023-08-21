@@ -41,13 +41,12 @@ const ChannelShorts = ({ profile }: Props) => {
 	);
 
 	React.useMemo(() => {
-		let filteredVideos = videos as Post[];
-		filteredVideos.filter((video) => {
+		let filteredVideos = (videos as Post[]).filter((video) => {
 			let tag = video?.metadata?.attributes.find(
 				(attr) => attr?.traitType === 'durationInSeconds'
 			);
-			if (!!tag) {
-				let duration = parseFloat(tag.value || '0');
+			if (!!tag && tag?.value) {
+				let duration = parseFloat(tag.value);
 				if (duration < 60) {
 					return video;
 				}
