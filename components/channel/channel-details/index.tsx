@@ -3,14 +3,13 @@ import { Button } from 'antd';
 import { Profile } from '@lens-protocol/react-web';
 
 // Components
-import { ProfileAvatar } from '@/components/common';
+import { ContentRenderer, ProfileAvatar } from '@/components/common';
 
 // Utils
 import { formatFollowers } from '@/utils';
 
 // Icons
 import { PiCheck, PiConfetti, PiPlus } from 'react-icons/pi';
-import { Nixie_One } from 'next/font/google';
 
 interface Props {
 	profile: Profile;
@@ -18,9 +17,9 @@ interface Props {
 
 const ChannelDetails = ({ profile }: Props) => {
 	return (
-		<div className='w-full p-4 mx-auto select-none max-w-screen-2xl'>
+		<div className='w-full p-4 mx-auto max-w-screen-2xl'>
 			<div className='flex flex-col items-start justify-between gap-8 md:items-center md:flex-row'>
-				<div className='flex flex-row items-center gap-2'>
+				<div className='flex flex-row items-start gap-2'>
 					<div className='max-w-[6.75rem]'>
 						<ProfileAvatar
 							picture={profile?.picture || null}
@@ -41,12 +40,8 @@ const ChannelDetails = ({ profile }: Props) => {
 								{formatFollowers(profile?.stats?.totalPosts || 0)} posts
 							</span>
 						</div>
-						<div className='flex flex-row gap-2 font-medium max-w-[256px] sm:max-w-324px]'>
-							<p>
-								{profile?.bio?.length || 0 > 48
-									? profile?.bio?.slice(0, 48) + '...'
-									: profile?.bio}
-							</p>
+						<div className='flex flex-row gap-2 font-medium max-w-[256px] sm:max-w-[400px] md:max-w-[500px]'>
+							<ContentRenderer>{profile?.bio || ''}</ContentRenderer>
 						</div>
 					</div>
 				</div>
