@@ -21,7 +21,7 @@ const FollowingUserCard = ({ following }: Props) => {
 		},
 	} = following;
 	return (
-		<div className='flex flex-col justify-between w-fit p-4 items-center hover:-translate-y-[2px] hover:translate-x-[2px] rounded-2xl transition-all duration-200 ease-in-out shadow-sm px-6'>
+		<div className='flex flex-col justify-between w-fit p-4 items-center hover:-translate-y-[1px] hover:translate-x-[1px] rounded-2xl transition-all duration-200 ease-in-out shadow-sm px-6'>
 			<div className='flex flex-col items-center mb-2'>
 				<div className='max-w-[6rem]'>
 					<ProfileAvatar size={96} picture={picture || null} />
