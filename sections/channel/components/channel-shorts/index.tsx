@@ -7,6 +7,7 @@ import {
 	Profile,
 	PublicationTypes,
 	AnyPublication,
+	Post,
 } from '@lens-protocol/react-web';
 
 // Components
@@ -40,15 +41,15 @@ const ChannelShorts = ({ profile }: Props) => {
 	);
 
 	React.useMemo(() => {
-		const filteredVideos = (videos || []).filter((video) => {
-			if (video.__typename === 'Post') {
-				let tag = video?.metadata?.attributes.find(
-					(attr) => attr?.traitType === 'durationInSeconds'
-				);
-				if (tag !== undefined) {
-					if (parseFloat(tag.value || '0') < 60) {
-						return video;
-					}
+		let filteredVideos = videos as Post[];
+		filteredVideos.filter((video) => {
+			let tag = video?.metadata?.attributes.find(
+				(attr) => attr?.traitType === 'durationInSeconds'
+			);
+			if (!!tag) {
+				let duration = parseFloat(tag.value || '0');
+				if (duration < 60) {
+					return video;
 				}
 			}
 		});
@@ -68,7 +69,7 @@ const ChannelShorts = ({ profile }: Props) => {
 			)}
 			{!!filteredVideos && (
 				<InfiniteScroll
-					dataLength={filteredVideos.length}
+					dataLength={videos!.length}
 					next={next}
 					hasMore={hasMore}
 					loader={
@@ -80,7 +81,7 @@ const ChannelShorts = ({ profile }: Props) => {
 					}
 				>
 					<div className='grid grid-cols-1 gap-4 my-12 2xl:grid-cols-4 md:grid-cols-2 xl:grid-cols-3'>
-						{filteredVideos.slice(0, 2).map((video, i) => (
+						{filteredVideos.map((video, i) => (
 							<VideoCard key={i} publication={video} isOnChannelPage />
 						))}
 					</div>
