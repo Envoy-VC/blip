@@ -8,7 +8,7 @@ import { VideoPlayer, VideoDetails, VideoComments } from '@/sections/watch';
 
 const Watch: NextPageWithLayout = () => {
 	return (
-		<div className='flex flex-col lg:flex-row gap-8 w-full mx-8'>
+		<div className='flex flex-col lg:flex-row gap-8 w-full mx-0 sm:mx-8 mt-4 sm:mt-0'>
 			<div className='basis-3/4 w-full'>
 				<div className='flex flex-col gap-1'>
 					<VideoPlayer />

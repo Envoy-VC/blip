@@ -1,5 +1,4 @@
 import React from 'react';
-import { Tooltip } from 'antd';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 
@@ -7,23 +6,26 @@ import ProfileTooltip from './profile-tooltip';
 
 interface Props {
 	children: React.ReactNode;
+	showFull?: boolean;
 }
 
-const ContentRenderer = ({ children }: Props) => {
+const ContentRenderer = ({ children, showFull = true }: Props) => {
 	const parseContentForMentions = (content: string) => {
-		const re = /(^|\s)@([A-z]+)\b/gi;
-		return content.replace(new RegExp(re), ' <a>@$2</a>');
+		const re = /(^|\s)@([A-z/0-9]+)\b/gi;
+		return content.replace(new RegExp(re), ' <mark>@$2</mark>');
 	};
 	return (
 		<ReactMarkdown
 			components={{
-				a({ node, className, children, ...props }) {
+				mark({ node, className, children, ...props }) {
 					return <ProfileTooltip>{children}</ProfileTooltip>;
 				},
 			}}
 			rehypePlugins={[rehypeRaw]}
 		>
-			{parseContentForMentions(children as string)}
+			{showFull
+				? parseContentForMentions(children as string)
+				: parseContentForMentions(children as string).slice(0, 200)}
 		</ReactMarkdown>
 	);
 };
