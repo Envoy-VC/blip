@@ -1,9 +1,12 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import { AnyPublication } from '@lens-protocol/react-web';
 
+// Components
 import { ProfileAvatar } from '../..';
 import VideoCover from './video-cover';
 
+// Utils
 import { ISOTimeToTimeAgo, formatFollowers } from '@/utils';
 
 interface Props {
@@ -12,10 +15,14 @@ interface Props {
 }
 
 const VideoCard = ({ publication, isOnChannelPage }: Props) => {
+	const router = useRouter();
 	const video = (publication.__typename === 'Post' && publication) || null;
 	let profile = video?.profile;
 	return (
-		<div className='flex flex-col rounded-lg aspect-video'>
+		<div
+			className='flex flex-col rounded-lg aspect-video cursor-pointer'
+			onClick={() => router.push(`/watch/${video?.id}`)}
+		>
 			<VideoCover
 				video={video}
 				height={224}
