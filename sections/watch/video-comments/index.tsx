@@ -36,7 +36,11 @@ const VideoComments = () => {
 	return (
 		<div className='flex flex-col gap-2 m-2 mb-8'>
 			<div className='flex flex-row items-center justify-between'>
-				<span className='font-sans font-medium text-lg'>271,987 Comments</span>
+				<span className='font-sans font-medium text-lg'>
+					{(comments?.length || 0) > 1
+						? `${comments?.length} Comments`
+						: `${comments?.length} Comment`}
+				</span>
 				<Dropdown menu={{ items }} trigger={['click']}>
 					<Button
 						type='text'
