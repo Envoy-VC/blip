@@ -46,6 +46,15 @@ export const ISOTimeToTimeAgo = (ISOTime: string) => {
 	return 'just now';
 };
 
+export const ISOTimeToDay = (ISOTime: string) => {
+	// format iso time to format Aug 19, 2023
+	const time = new Date(ISOTime);
+	const month = time.toLocaleString('default', { month: 'short' });
+	const day = time.getDate();
+	const year = time.getFullYear();
+	return `${month} ${day}, ${year}`;
+};
+
 export const getUrlFromURI = (uri: string) => {
 	if (uri.startsWith('ipfs://')) {
 		return `https://ipfs.io/ipfs/${uri.slice(7)}`;

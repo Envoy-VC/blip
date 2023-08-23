@@ -1,11 +1,15 @@
 import React from 'react';
-import Image from 'next/image';
 import { Player } from '@livepeer/react';
 
+import { VideoContext } from '@/pages/watch/[...publicationId]';
+import VideoCover from '@/components/common/cards/video-card/video-cover';
+
 const VideoPlayer = () => {
+	const { post } = React.useContext(VideoContext);
 	return (
 		<Player
-			playbackId='f5eese9wwl88k4g8'
+			poster={<VideoCover video={post} preview={false} />}
+			playbackId={post!.metadata?.animatedUrl}
 			showPipButton
 			objectFit='cover'
 			showTitle={false}

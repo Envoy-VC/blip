@@ -1,11 +1,27 @@
 import React from 'react';
-import { Dropdown, Button, MenuProps } from 'antd';
+import { Dropdown, Button, MenuProps, Spin } from 'antd';
+import { VideoContext } from '@/pages/watch/[...publicationId]';
+import { Comment, PublicationId, useComments } from '@lens-protocol/react-web';
+import InfiniteScroll from 'react-infinite-scroll-component';
+
+// Components
 import { VideoCommentBox, CommentPill } from '@/components/video-page';
 
 // Icons
 import { PiFunnelSimpleBold } from 'react-icons/pi';
+import { LoadingOutlined } from '@ant-design/icons';
 
 const VideoComments = () => {
+	const { post } = React.useContext(VideoContext);
+	const {
+		data: comments,
+		loading,
+		hasMore,
+		next,
+	} = useComments({
+		commentsOf: post?.id || ('' as PublicationId),
+		limit: 10,
+	});
 	const items: MenuProps['items'] = [
 		{
 			label: 'Top Comments',
@@ -33,13 +49,28 @@ const VideoComments = () => {
 				</Dropdown>
 			</div>
 			<VideoCommentBox />
-			<div className='flex flex-col gap-2 my-2'>
-				{Array(5)
-					.fill(0)
-					.map((_, i) => (
-						<CommentPill key={i} />
-					))}
-			</div>
+			{!comments ? (
+				<div>loading...</div>
+			) : (
+				<InfiniteScroll
+					dataLength={comments.length}
+					next={next}
+					hasMore={hasMore}
+					loader={
+						<div className='mx-auto w-fit pb-8'>
+							<Spin
+								indicator={<LoadingOutlined style={{ fontSize: 36 }} spin />}
+							/>
+						</div>
+					}
+				>
+					<div className='flex flex-col my-2'>
+						{(comments as Comment[]).map((comment) => (
+							<CommentPill comment={comment} key={comment.id} />
+						))}
+					</div>
+				</InfiniteScroll>
+			)}
 		</div>
 	);
 };

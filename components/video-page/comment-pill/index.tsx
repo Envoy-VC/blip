@@ -7,27 +7,37 @@ import { ContentRenderer } from '@/components/common';
 
 // Icons
 import { PiThumbsUp, PiThumbsDown } from 'react-icons/pi';
+import { Comment } from '@lens-protocol/react-web';
 
-const CommentPill = () => {
+// Utils
+import { ISOTimeToTimeAgo } from '@/utils';
+
+interface Props {
+	comment: Comment;
+}
+
+const CommentPill = ({ comment }: Props) => {
+	const {
+		createdAt,
+		profile: { name, picture, handle },
+		metadata: { content },
+		stats: { totalUpvotes },
+	} = comment;
 	return (
 		<div className='p-2 rounded-lg'>
 			<div className='flex flex-row items-start gap-2'>
 				<div>
-					<ProfileAvatar picture={null} size={36} />
+					<ProfileAvatar picture={picture || null} size={36} />
 				</div>
 				<div className='flex flex-col'>
 					<div className='flex flex-row gap-2 text-sm font-sans'>
-						<span className='font-semibold'>@dragonspike101</span>
-						<span className='text-[#838383] font-medium'>3 days ago</span>
+						<span className='font-semibold'>{handle}</span>
+						<span className='text-[#838383] font-medium'>
+							{ISOTimeToTimeAgo(createdAt || '')}
+						</span>
 					</div>
 					<div className='font-sans font-medium whitespace-pre-wrap break-words max-w-sm sm:max-w-full text-[0.9rem]'>
-						<ContentRenderer>
-							You could try to build a mini rollercoaster track for a small
-							levitating train, using a type2 superconductor for the train and
-							magnets for the rails. What would make it really cool is the fact
-							that it could go on loops and upside down since a type2
-							@lensprotocol @aaveaave @nader
-						</ContentRenderer>
+						<ContentRenderer>{content}</ContentRenderer>
 					</div>
 					<div className='flex flex-ro gap-1'>
 						<Button
@@ -37,7 +47,7 @@ const CommentPill = () => {
 							title='Like'
 						>
 							<PiThumbsUp size='16' />
-							221
+							{totalUpvotes || 0}
 						</Button>
 						<Button
 							type='text'

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useActiveProfile } from '@lens-protocol/react-web';
 import { Dropdown, Button, Input, ConfigProvider } from 'antd';
 import EmojiPicker, { EmojiStyle } from 'emoji-picker-react';
 
@@ -7,11 +8,12 @@ import { ProfileAvatar } from '@/components/common';
 import { PiSmiley } from 'react-icons/pi';
 
 const VideoCommentBox = () => {
+	const { data: activeProfile } = useActiveProfile();
 	const [comment, setComment] = React.useState<string>('');
 	return (
 		<div className='flex flex-row items-start gap-3'>
 			<div className='max-w-[40px]'>
-				<ProfileAvatar picture={null} size={40} />
+				<ProfileAvatar picture={activeProfile?.picture || null} size={40} />
 			</div>
 			<div className='flex flex-col items-end gap-2 w-full'>
 				<ConfigProvider

@@ -80,7 +80,7 @@ interface FallbackProfilePictureProps {
 }
 
 const FallbackProfilePicture = ({ size }: FallbackProfilePictureProps) => {
-	return <Avatar icon={<PiUser size='96' />} size={size} />;
+	return <Avatar icon={<PiUser size={size} />} size={size} />;
 };
 
 const ProfileAvatar = ({ picture, width, height, ...props }: Props) => {

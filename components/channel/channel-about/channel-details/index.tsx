@@ -3,6 +3,8 @@ import { Button } from 'antd';
 import { Profile } from '@lens-protocol/react-web';
 import toast from 'react-hot-toast';
 
+import { ContentRenderer } from '@/components/common';
+
 // Icons
 import {
 	PiCurrencyEth,
@@ -40,7 +42,7 @@ const ChannelDetails = ({ profile }: Props) => {
 				<div className='flex flex-col gap-2'>
 					<span className='text-xl font-semibold'>Description</span>
 					<p className='text-[1rem] whitespace-pre-wrap break-words max-w-md'>
-						{bio}
+						<ContentRenderer>{bio}</ContentRenderer>
 					</p>
 				</div>
 				<div className='border-[1px] my-2 border-[#eee]' />
