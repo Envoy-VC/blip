@@ -1,11 +1,13 @@
 import React from 'react';
+import { useRouter } from 'next/router';
+import { useActiveProfile } from '@lens-protocol/react-web';
 import { Button, Divider } from 'antd';
 
-import { useActiveProfile } from '@lens-protocol/react-web';
-
+// Components
 import FollowingList from './following-list';
 import ExploreList from './explore-list';
 
+// Icons
 import {
 	PiFilmStrip,
 	PiHouseSimple,
@@ -27,7 +29,43 @@ export interface SidebarItem {
 }
 
 const Sidebar = ({ sidebarOpen }: Props) => {
+	const router = useRouter();
 	const { data: profile } = useActiveProfile();
+
+	const SidebarItems: SidebarItem[] = [
+		{
+			name: 'Home',
+			icon: <PiHouseSimple size={20} />,
+			handleClick: () => router.push('/'),
+		},
+		{
+			name: 'Shorts',
+			icon: <PiFilmStrip size={20} />,
+		},
+		{
+			name: 'Following',
+			icon: <PiDna size={20} />,
+		},
+		{
+			name: 'divider',
+		},
+		{
+			name: 'Bookmarks',
+			icon: <PiBookmarksSimple size={20} />,
+		},
+		{
+			name: 'Your Videos',
+			icon: <PiVideo size={20} />,
+		},
+		{
+			name: 'Liked Videos',
+			icon: <PiThumbsUp size={20} />,
+		},
+		{
+			name: 'divider',
+		},
+	];
+
 	return (
 		<div
 			className={`p-4 overflow-y-scroll h-[91.5vh] custom-scrollbar shadow-sm hidden sm:flex pr-6 ${
@@ -50,6 +88,7 @@ const Sidebar = ({ sidebarOpen }: Props) => {
 								className='flex flex-row items-center gap-6'
 								type='text'
 								size='large'
+								onClick={item.handleClick}
 							>
 								{item.icon}
 								<div
@@ -78,38 +117,5 @@ const Sidebar = ({ sidebarOpen }: Props) => {
 		</div>
 	);
 };
-
-const SidebarItems: SidebarItem[] = [
-	{
-		name: 'Home',
-		icon: <PiHouseSimple size={20} />,
-	},
-	{
-		name: 'Shorts',
-		icon: <PiFilmStrip size={20} />,
-	},
-	{
-		name: 'Following',
-		icon: <PiDna size={20} />,
-	},
-	{
-		name: 'divider',
-	},
-	{
-		name: 'Bookmarks',
-		icon: <PiBookmarksSimple size={20} />,
-	},
-	{
-		name: 'Your Videos',
-		icon: <PiVideo size={20} />,
-	},
-	{
-		name: 'Liked Videos',
-		icon: <PiThumbsUp size={20} />,
-	},
-	{
-		name: 'divider',
-	},
-];
 
 export default Sidebar;

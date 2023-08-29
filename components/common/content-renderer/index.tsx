@@ -11,7 +11,12 @@ interface Props {
 
 const ContentRenderer = ({ children, showFull = true }: Props) => {
 	const parseContentForMentions = (content: string) => {
-		const re = /(^|\s)@([A-z/0-9]+)\b/gi;
+		const re = /(^|\s)@([A-z]+).lens\b/gi;
+		const lensprotocolMention = /(^|\s)@lensprotocol\b/gi;
+		content = content.replace(
+			lensprotocolMention,
+			' <mark>@lensprotocol</mark>'
+		);
 		return content.replace(new RegExp(re), ' <mark>@$2</mark>');
 	};
 	return (

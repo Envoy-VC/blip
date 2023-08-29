@@ -41,7 +41,9 @@ const Navbar = ({ sidebarOpen, setSideBarOpen }: Props) => {
 						onClick={() => setSideBarOpen(!sidebarOpen)}
 						className='!p-6 flex justify-center items-center hover:!bg-transparent'
 					/>
-					<span className='text-[1.25rem] font-bold'>Blip</span>
+					<Link href='/' className='text-[1.25rem] font-bold'>
+						Blip
+					</Link>
 				</div>
 				<ConfigProvider
 					theme={{
