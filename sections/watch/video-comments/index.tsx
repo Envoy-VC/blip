@@ -22,6 +22,20 @@ const VideoComments = () => {
 		commentsOf: post?.id || ('' as PublicationId),
 		limit: 10,
 	});
+
+	const [isNextLoading, setIsNextLoading] = React.useState<boolean>(false);
+
+	const handleShowMore = async () => {
+		try {
+			setIsNextLoading(true);
+			await next();
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setIsNextLoading(false);
+		}
+	};
+
 	const items: MenuProps['items'] = [
 		{
 			label: 'Top Comments',
@@ -56,24 +70,29 @@ const VideoComments = () => {
 			{!comments ? (
 				<div>loading...</div>
 			) : (
-				<InfiniteScroll
-					dataLength={comments.length}
-					next={next}
-					hasMore={hasMore}
-					loader={
-						<div className='mx-auto w-fit pb-8'>
-							<Spin
-								indicator={<LoadingOutlined style={{ fontSize: 36 }} spin />}
-							/>
-						</div>
-					}
+				<div className='flex flex-col my-2'>
+					{(comments as Comment[]).map((comment) => (
+						<CommentPill comment={comment} key={comment.id} />
+					))}
+				</div>
+			)}
+			{hasMore && (
+				<Button
+					type='text'
+					size='large'
+					className='text-[1rem] font-medium bg-primary hover:!bg-[#2f55ebd0] text-white hover:!text-white my-4 w-fit'
+					onClick={handleShowMore}
 				>
-					<div className='flex flex-col my-2'>
-						{(comments as Comment[]).map((comment) => (
-							<CommentPill comment={comment} key={comment.id} />
-						))}
-					</div>
-				</InfiniteScroll>
+					{isNextLoading ? (
+						<Spin
+							indicator={
+								<LoadingOutlined style={{ fontSize: 20, color: '#fff' }} spin />
+							}
+						/>
+					) : (
+						'Show More'
+					)}
+				</Button>
 			)}
 		</div>
 	);

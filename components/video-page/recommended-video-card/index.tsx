@@ -16,7 +16,7 @@ const RecommendedVideoCard = ({ video }: Props) => {
 	const router = useRouter();
 	const {
 		id,
-		profile: { name: profileName },
+		profile: { name: profileName, handle },
 		metadata: { name },
 		stats: { totalUpvotes },
 		createdAt,
@@ -40,7 +40,13 @@ const RecommendedVideoCard = ({ video }: Props) => {
 					{name?.slice(0, 60) || ''}
 				</div>
 				<div className='font-sans 2xl:text-sm text-xs font-semibold max-w-[200px] text-[#9b9b9b]'>
-					{profileName?.slice(0, 64) || ''}
+					{profileName
+						? profileName?.length > 60
+							? `${profileName?.slice(0, 60)}...`
+							: profileName
+						: handle?.length > 60
+						? `${handle?.slice(0, 60)}...`
+						: handle}
 				</div>
 				<div className='flex flex-row sm:flex-col 2xl:flex-row gap-2 sm:gap-0 2xl:gap-2 items-center 2xl:items-center sm:items-start text-xs 2xl:text-sm'>
 					<div className='font-sans font-semibold text-[#9b9b9b]'>
