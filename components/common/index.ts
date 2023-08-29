@@ -6,6 +6,7 @@ import ProfileAvatar from './profile-avatar';
 import Notifications from './notifications';
 import ShareButton from './share-button';
 import ContentRenderer from './content-renderer';
+import FilterBar from './filter-bar';
 
 export {
 	SEO,
@@ -16,4 +17,5 @@ export {
 	Notifications,
 	ShareButton,
 	ContentRenderer,
+	FilterBar,
 };

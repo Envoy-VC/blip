@@ -11,6 +11,15 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 const { defaultAlgorithm, darkAlgorithm } = theme;
 
+// Filter Context
+export const FilterContext = React.createContext<{
+	tag: string;
+	setTag: React.Dispatch<React.SetStateAction<string>>;
+}>({
+	tag: 'all',
+	setTag: () => {},
+});
+
 interface Props {
 	children: React.ReactNode;
 }
@@ -19,6 +28,7 @@ const NestedLayout = ({ children }: Props) => {
 	const [pageLoaded, setPageLoaded] = React.useState<boolean>(false);
 	const [sidebarOpen, setSidebarOpen] = React.useState<boolean>(true);
 	const { theme: appTheme, setTheme } = useTheme();
+	const [tag, setTag] = React.useState<string>('all');
 
 	React.useEffect(() => {
 		setTheme('light');
@@ -27,29 +37,31 @@ const NestedLayout = ({ children }: Props) => {
 
 	if (pageLoaded)
 		return (
-			<ConfigProvider
-				theme={{
-					algorithm:
-						appTheme === undefined
-							? defaultAlgorithm
-							: appTheme === 'light'
-							? defaultAlgorithm
-							: darkAlgorithm,
-				}}
-			>
-				<SEO />
-				<div className={`flex flex-col ${inter.className}`}>
-					<Navbar sidebarOpen={sidebarOpen} setSideBarOpen={setSidebarOpen} />
-					<div className='flex flex-row'>
-						<Sidebar
-							sidebarOpen={sidebarOpen}
-							setSideBarOpen={setSidebarOpen}
-						/>
-						{children}
+			<FilterContext.Provider value={{ tag, setTag }}>
+				<ConfigProvider
+					theme={{
+						algorithm:
+							appTheme === undefined
+								? defaultAlgorithm
+								: appTheme === 'light'
+								? defaultAlgorithm
+								: darkAlgorithm,
+					}}
+				>
+					<SEO />
+					<div className={`flex flex-col ${inter.className}`}>
+						<Navbar sidebarOpen={sidebarOpen} setSideBarOpen={setSidebarOpen} />
+						<div className='flex flex-row'>
+							<Sidebar
+								sidebarOpen={sidebarOpen}
+								setSideBarOpen={setSidebarOpen}
+							/>
+							{children}
+						</div>
+						<Toaster position='bottom-left' />
 					</div>
-					<Toaster position='bottom-left' />
-				</div>
-			</ConfigProvider>
+				</ConfigProvider>
+			</FilterContext.Provider>
 		);
 };
 
