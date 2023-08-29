@@ -25,7 +25,9 @@ const RecommendedVideoCard = ({ video }: Props) => {
 		<div
 			className='rounded-md flex flex-row items-start gap-2 cursor-pointer w-full'
 			onClick={() => {
-				router.push(`/watch/${id}`);
+				router
+					.prefetch(`/watch/${id}`)
+					.then((res) => router.push(`/watch/${id}`));
 			}}
 		>
 			<VideoCover
