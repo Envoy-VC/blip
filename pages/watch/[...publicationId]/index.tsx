@@ -9,7 +9,12 @@ export const VideoContext = React.createContext<{
 	post: Post | null;
 }>({ post: null });
 
-import { VideoPlayer, VideoDetails, VideoComments } from '@/sections/watch';
+import {
+	VideoPlayer,
+	VideoDetails,
+	VideoComments,
+	RecommendedVideos,
+} from '@/sections/watch';
 import { usePublication, Post, PublicationId } from '@lens-protocol/react-web';
 
 const Watch: NextPageWithLayout = () => {
@@ -36,7 +41,9 @@ const Watch: NextPageWithLayout = () => {
 						<VideoComments />
 					</div>
 				</div>
-				<div className='basis-1/4 w-full'></div>
+				<div className='basis-1/4 w-full'>
+					<RecommendedVideos />
+				</div>
 			</div>
 		</VideoContext.Provider>
 	);
