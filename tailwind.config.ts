@@ -22,6 +22,7 @@ const config: Config = {
 		},
 		plugins: [require('@tailwindcss/aspect-ratio')],
 	},
+	darkMode: 'class',
 };
 
 export default config;
