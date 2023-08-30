@@ -61,7 +61,7 @@ const Home: NextPageWithLayout = () => {
 			<div className='flex flex-col px-2'>
 				{loading && (
 					<div className='my-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
-						{Array(4)
+						{Array(16)
 							.fill(1)
 							.map((_, i) => (
 								<VideoCardSkeleton key={i} />
