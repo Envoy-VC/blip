@@ -24,25 +24,25 @@ const CommentPill = ({ comment }: Props) => {
 		stats: { totalUpvotes },
 	} = comment;
 	return (
-		<div className='p-2 rounded-lg'>
+		<div className='rounded-lg p-2'>
 			<div className='flex flex-row items-start gap-2'>
 				<div>
 					<ProfileAvatar picture={picture || null} size={36} />
 				</div>
 				<div className='flex flex-col'>
-					<div className='flex flex-row gap-2 text-sm font-sans'>
+					<div className='flex flex-row gap-2 font-sans text-sm'>
 						<span className='font-semibold'>{handle}</span>
-						<span className='text-[#838383] font-medium'>
+						<span className='font-medium text-[#838383]'>
 							{ISOTimeToTimeAgo(createdAt || '')}
 						</span>
 					</div>
-					<div className='font-sans font-medium whitespace-pre-wrap break-words max-w-sm sm:max-w-full text-[0.9rem]'>
+					<div className='max-w-sm whitespace-pre-wrap break-words font-sans text-[0.9rem] font-medium sm:max-w-full'>
 						<ContentRenderer>{content}</ContentRenderer>
 					</div>
-					<div className='flex flex-ro gap-1'>
+					<div className='flex-ro flex gap-1'>
 						<Button
 							type='text'
-							className='flex items-center justify-center gap-2 !text-sm font-medium font-sans !px-1'
+							className='flex items-center justify-center gap-2 !px-1 font-sans !text-sm font-medium'
 							size='large'
 							title='Like'
 						>

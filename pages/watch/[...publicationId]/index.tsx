@@ -33,15 +33,15 @@ const Watch: NextPageWithLayout = () => {
 
 	return (
 		<VideoContext.Provider value={{ post: publication as Post }}>
-			<div className='flex flex-col lg:flex-row gap-8 w-full mx-0 sm:mx-8 mt-4 sm:mt-0'>
-				<div className='basis-3/4 w-full'>
+			<div className='mx-0 mt-4 flex w-full flex-col gap-8 sm:mx-8 sm:mt-0 lg:flex-row'>
+				<div className='w-full basis-3/4'>
 					<div className='flex flex-col gap-1'>
 						<VideoPlayer />
 						<VideoDetails />
 						<VideoComments />
 					</div>
 				</div>
-				<div className='basis-1/4 w-full'>
+				<div className='w-full basis-1/4'>
 					<RecommendedVideos />
 				</div>
 			</div>

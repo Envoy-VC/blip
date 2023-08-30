@@ -3,10 +3,10 @@ import { Skeleton } from 'antd';
 
 const PostCardSkeleton = () => {
 	return (
-		<div className='max-w-screen-md rounded-xl shadow-sm p-4 bg-[#dadada1c]'>
+		<div className='max-w-screen-md rounded-xl bg-[#dadada1c] p-4 shadow-sm'>
 			<div className='flex flex-col gap-3'>
-				<div className='flex flex-row justify-between items-center'>
-					<div className='flex flex-row gap-2 items-center'>
+				<div className='flex flex-row items-center justify-between'>
+					<div className='flex flex-row items-center gap-2'>
 						<Skeleton.Avatar size={48} active />
 						<Skeleton.Button size='small' active />
 					</div>

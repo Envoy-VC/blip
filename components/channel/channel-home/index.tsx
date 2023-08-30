@@ -36,7 +36,7 @@ const ChannelHome = ({ profile }: Props) => {
 	return (
 		<>
 			{loading && (
-				<div className='grid grid-cols-1 gap-4 my-12 2xl:grid-cols-4 md:grid-cols-2 xl:grid-cols-3'>
+				<div className='my-12 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
 					{Array(4)
 						.fill(1)
 						.map((_, i) => (
@@ -57,7 +57,7 @@ const ChannelHome = ({ profile }: Props) => {
 						</div>
 					}
 				>
-					<div className='grid grid-cols-1 gap-4 my-12 2xl:grid-cols-4 md:grid-cols-2 xl:grid-cols-3'>
+					<div className='my-12 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
 						{videos.map((video, i) => (
 							<VideoCard key={i} publication={video} isOnChannelPage />
 						))}

@@ -25,9 +25,9 @@ const PostCard = ({ post }: Props) => {
 	} = post;
 	const [showMoreActive, setShowMoreActive] = React.useState(false);
 	return (
-		<div className='max-w-screen-md rounded-xl shadow- p-4 postContainer'>
+		<div className='shadow- postContainer max-w-screen-md rounded-xl p-4'>
 			<div className='flex flex-col gap-1'>
-				<div className='flex flex-row justify-between items-center'>
+				<div className='flex flex-row items-center justify-between'>
 					<div className='flex flex-row gap-2'>
 						<div className='max-w-[3rem]'>
 							<ProfileAvatar picture={picture || null} size={42} />
@@ -41,8 +41,8 @@ const PostCard = ({ post }: Props) => {
 					</div>
 					<Button icon={<PiDotsThreeVerticalBold size={24} />} type='text' />
 				</div>
-				<div className='flex flex-col gap-2 max-w-xl items-start '>
-					<p className='font-sans font-medium text-[1rem] whitespace-pre-wrap break-words max-w-xs sm:max-w-xl'>
+				<div className='flex max-w-xl flex-col items-start gap-2 '>
+					<p className='max-w-xs whitespace-pre-wrap break-words font-sans text-[1rem] font-medium sm:max-w-xl'>
 						{content && content.length > 250 && !showMoreActive
 							? content.slice(0, 250) + '...'
 							: content}
@@ -71,7 +71,7 @@ const PostCard = ({ post }: Props) => {
 													key={i}
 													src={getUrlFromURI(ele?.url || '')}
 													alt={ele?.altTag || ''}
-													className='rounded-lg aspect-square object-cover max-w-[256px]'
+													className='aspect-square max-w-[256px] rounded-lg object-cover'
 												/>
 											);
 										} else if (!!media.original?.url) {
@@ -81,7 +81,7 @@ const PostCard = ({ post }: Props) => {
 													key={i}
 													src={getUrlFromURI(ele?.url || '')}
 													alt={ele?.altTag || ''}
-													className='aspect-square object-cover rounded-lg max-w-[256px]'
+													className='aspect-square max-w-[256px] rounded-lg object-cover'
 												/>
 											);
 										}
@@ -90,9 +90,9 @@ const PostCard = ({ post }: Props) => {
 					</div>
 				</div>
 				<div className='flex flex-row items-center justify-between text-sm font-medium text-[#aaa]'>
-					<div className='flex flex-row gap-1 items-center'>
+					<div className='flex flex-row items-center gap-1'>
 						<span>{formatFollowers(totalUpvotes)} likes</span>
-						<div className='w-1 h-1 rounded-full bg-[#eee]' />
+						<div className='h-1 w-1 rounded-full bg-[#eee]' />
 						<span>{formatFollowers(totalAmountOfComments)} comments</span>
 					</div>
 					<span>{formatFollowers(totalAmountOfMirrors)} mirrors</span>

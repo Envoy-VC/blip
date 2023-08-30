@@ -56,11 +56,11 @@ const Home: NextPageWithLayout = () => {
 		metadataFilter: filter(tag),
 	});
 	return (
-		<div className='grid grid-cols-1 items-start place-content-start'>
+		<div className='grid grid-cols-1 place-content-start items-start'>
 			<FilterBar />
 			<div className='flex flex-col px-2'>
 				{loading && (
-					<div className='grid grid-cols-1 gap-4 my-6 2xl:grid-cols-4 md:grid-cols-2 xl:grid-cols-3'>
+					<div className='my-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
 						{Array(4)
 							.fill(1)
 							.map((_, i) => (
@@ -81,7 +81,7 @@ const Home: NextPageWithLayout = () => {
 							</div>
 						}
 					>
-						<div className='grid grid-cols-1 gap-4 my-6 2xl:grid-cols-4 md:grid-cols-2 xl:grid-cols-3'>
+						<div className='my-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
 							{videos.map((video, i) => (
 								<VideoCard
 									key={i}

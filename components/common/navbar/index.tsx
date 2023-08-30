@@ -21,7 +21,7 @@ interface Props {
 
 const Navbar = ({ sidebarOpen, setSideBarOpen }: Props) => {
 	return (
-		<div className='p-2 px-3 select-none border-b-gray-200'>
+		<div className='select-none border-b-gray-200 p-2 px-3'>
 			<div className='flex flex-row items-center justify-between'>
 				<div className='flex flex-row items-center gap-0'>
 					<Button
@@ -33,13 +33,13 @@ const Navbar = ({ sidebarOpen, setSideBarOpen }: Props) => {
 								width={22}
 								className={`max-w-[22px] ${
 									sidebarOpen
-										? 'rotate-[-120deg] -translate-x-1 -translate-y-1'
+										? '-translate-x-1 -translate-y-1 rotate-[-120deg]'
 										: ''
 								} transition-all duration-[250ms] ease-in-out`}
 							/>
 						}
 						onClick={() => setSideBarOpen(!sidebarOpen)}
-						className='!p-6 flex justify-center items-center hover:!bg-transparent'
+						className='flex items-center justify-center !p-6 hover:!bg-transparent'
 					/>
 					<Link href='/' className='text-[1.25rem] font-bold'>
 						Blip
@@ -69,7 +69,7 @@ const Navbar = ({ sidebarOpen, setSideBarOpen }: Props) => {
 							</Tooltip>
 						}
 						size='small'
-						className='max-w-[28rem] rounded-3xl py-2 px-4 text-[0.875rem] hidden md:flex'
+						className='hidden max-w-[28rem] rounded-3xl px-4 py-2 text-[0.875rem] md:flex'
 					/>
 				</ConfigProvider>
 				<div className='flex flex-row items-center gap-4'>

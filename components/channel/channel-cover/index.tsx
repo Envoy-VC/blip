@@ -19,7 +19,7 @@ const CoverImageRenderer = ({
 					alt={coverPicture?.original?.altTag || ''}
 					placeholder={<Skeleton.Image className='min-w-full' />}
 					preview={false}
-					className='object-cover min-w-full'
+					className='min-w-full object-cover'
 				/>
 			);
 		}
@@ -30,20 +30,20 @@ const CoverImageRenderer = ({
 					alt=''
 					placeholder={<Skeleton.Image className='min-w-full' />}
 					preview={false}
-					className='object-cover min-w-full'
+					className='min-w-full object-cover'
 				/>
 			);
 		}
 		default:
 			return (
-				<Skeleton.Image className='object-cover min-w-full min-h-[18rem]' />
+				<Skeleton.Image className='min-h-[18rem] min-w-full object-cover' />
 			);
 	}
 };
 
 const ChannelCover = ({ profile }: Props) => {
 	return (
-		<div className='flex items-center overflow-y-hidden max-h-[18rem] w-full select-none justify-center'>
+		<div className='flex max-h-[18rem] w-full select-none items-center justify-center overflow-y-hidden'>
 			<CoverImageRenderer coverPicture={profile?.coverPicture} />
 		</div>
 	);

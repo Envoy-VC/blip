@@ -54,8 +54,8 @@ const ShareModal = ({ modalOpen, setModalOpen, content }: Props) => {
 				onCancel={() => handleModalState(false)}
 				footer={null}
 			>
-				<div className='flex flex-col gap-4 my-4'>
-					<div className='flex flex-row gap-3 items-center overflow-y-scroll scrollbar-hide'>
+				<div className='my-4 flex flex-col gap-4'>
+					<div className='scrollbar-hide flex flex-row items-center gap-3 overflow-y-scroll'>
 						<WhatsappShareButton url={url} title={title}>
 							<WhatsappIcon size={52} round />
 						</WhatsappShareButton>
@@ -90,7 +90,7 @@ const ShareModal = ({ modalOpen, setModalOpen, content }: Props) => {
 						suffix={
 							<Button
 								type='text'
-								className='bg-primary hover:!bg-secondary text-white hover:!text-white flex items-center justify-center !px-5'
+								className='flex items-center justify-center bg-primary !px-5 text-white hover:!bg-secondary hover:!text-white'
 								shape='round'
 								onClick={() => {
 									navigator.clipboard.writeText(url).then(() =>

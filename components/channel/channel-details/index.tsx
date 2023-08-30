@@ -17,8 +17,8 @@ interface Props {
 
 const ChannelDetails = ({ profile }: Props) => {
 	return (
-		<div className='w-full p-4 mx-auto max-w-screen-2xl'>
-			<div className='flex flex-col items-start justify-between gap-8 md:items-center md:flex-row'>
+		<div className='mx-auto w-full max-w-screen-2xl p-4'>
+			<div className='flex flex-col items-start justify-between gap-8 md:flex-row md:items-center'>
 				<div className='flex flex-row items-start gap-2'>
 					<div className='max-w-[6.75rem]'>
 						<ProfileAvatar
@@ -31,7 +31,7 @@ const ChannelDetails = ({ profile }: Props) => {
 						<span className='text-2xl font-semibold'>
 							{profile?.name || ''}
 						</span>
-						<div className='flex flex-row text-[#aaa] font-medium font-sans gap-2 text-[0.8rem] sm:text-[1rem]'>
+						<div className='flex flex-row gap-2 font-sans text-[0.8rem] font-medium text-[#aaa] sm:text-[1rem]'>
 							<span>@{profile?.handle}</span>
 							<span>
 								{formatFollowers(profile?.stats?.totalFollowers || 0)} followers
@@ -40,7 +40,7 @@ const ChannelDetails = ({ profile }: Props) => {
 								{formatFollowers(profile?.stats?.totalPosts || 0)} posts
 							</span>
 						</div>
-						<div className='flex flex-row gap-2 font-medium max-w-[256px] sm:max-w-[400px] md:max-w-[500px]'>
+						<div className='flex max-w-[256px] flex-row gap-2 font-medium sm:max-w-[400px] md:max-w-[500px]'>
 							<ContentRenderer>{profile?.bio || ''}</ContentRenderer>
 						</div>
 					</div>
@@ -49,16 +49,16 @@ const ChannelDetails = ({ profile }: Props) => {
 					<Button
 						type='text'
 						shape='round'
-						className='bg-primary hover:!bg-secondary text-white hover:!text-white flex flex-row items-center justify-center gap-2'
+						className='flex flex-row items-center justify-center gap-2 bg-primary text-white hover:!bg-secondary hover:!text-white'
 						size='large'
 					>
 						{profile.isFollowedByMe ? (
-							<div className='flex flex-row gap-2 items-center justify-center'>
+							<div className='flex flex-row items-center justify-center gap-2'>
 								<PiCheck size={24} />
 								Following
 							</div>
 						) : (
-							<div className='flex flex-row gap-2 items-center justify-center'>
+							<div className='flex flex-row items-center justify-center gap-2'>
 								<PiPlus size={24} />
 								Follow
 							</div>

@@ -23,7 +23,7 @@ const RecommendedVideoCard = ({ video }: Props) => {
 	} = video;
 	return (
 		<div
-			className='rounded-md flex flex-row items-start gap-2 cursor-pointer w-full'
+			className='flex w-full cursor-pointer flex-row items-start gap-2 rounded-md'
 			onClick={() => {
 				router
 					.prefetch(`/watch/${id}`)
@@ -33,13 +33,13 @@ const RecommendedVideoCard = ({ video }: Props) => {
 			<VideoCover
 				video={video}
 				preview={false}
-				className='min-w-[160px] max-h-[96px] w-full h-full aspect-video object-cover rounded-md'
+				className='aspect-video h-full max-h-[96px] w-full min-w-[160px] rounded-md object-cover'
 			/>
 			<div className='flex flex-col gap-1'>
-				<div className='font-sans 2xl:text-sm font-semibold max-w-[200px] break-all text-xs'>
+				<div className='max-w-[200px] break-all font-sans text-xs font-semibold 2xl:text-sm'>
 					{name?.slice(0, 60) || ''}
 				</div>
-				<div className='font-sans 2xl:text-sm text-xs font-semibold max-w-[200px] text-[#9b9b9b]'>
+				<div className='max-w-[200px] font-sans text-xs font-semibold text-[#9b9b9b] 2xl:text-sm'>
 					{profileName
 						? profileName?.length > 60
 							? `${profileName?.slice(0, 60)}...`
@@ -48,13 +48,13 @@ const RecommendedVideoCard = ({ video }: Props) => {
 						? `${handle?.slice(0, 60)}...`
 						: handle}
 				</div>
-				<div className='flex flex-row sm:flex-col 2xl:flex-row gap-2 sm:gap-0 2xl:gap-2 items-center 2xl:items-center sm:items-start text-xs 2xl:text-sm'>
+				<div className='flex flex-row items-center gap-2 text-xs sm:flex-col sm:items-start sm:gap-0 2xl:flex-row 2xl:items-center 2xl:gap-2 2xl:text-sm'>
 					<div className='font-sans font-semibold text-[#9b9b9b]'>
 						{totalUpvotes !== 1
 							? `${totalUpvotes} likes`
 							: `${totalUpvotes} like`}
 					</div>
-					<div className='w-1 h-1 rounded-full bg-[#9b9b9b] flex sm:hidden 2xl:flex' />
+					<div className='flex h-1 w-1 rounded-full bg-[#9b9b9b] sm:hidden 2xl:flex' />
 					<div className='font-sans font-semibold text-[#9b9b9b]'>
 						{ISOTimeToTimeAgo(createdAt || '')}
 					</div>

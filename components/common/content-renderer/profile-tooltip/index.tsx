@@ -21,12 +21,12 @@ const ProfilePreview = ({ profile }: ProfilePreviewProps) => {
 		stats: { totalFollowers, totalFollowing },
 	} = profile;
 	return (
-		<div className='p-2 flex flex-col gap-2'>
+		<div className='flex flex-col gap-2 p-2'>
 			<div className='flex flex-row justify-between'>
 				<ProfileAvatar picture={picture} size={56} />
 				<Button
 					type='text'
-					className='text-white bg-primary hover:!bg-primary hover:!text-white text-xs !py-0'
+					className='bg-primary !py-0 text-xs text-white hover:!bg-primary hover:!text-white'
 				>
 					Follow
 				</Button>
@@ -51,7 +51,7 @@ const ProfilePreview = ({ profile }: ProfilePreviewProps) => {
 
 const ProfilePreviewSkeleton = () => {
 	return (
-		<div className='p-2 flex flex-col gap-2'>
+		<div className='flex flex-col gap-2 p-2'>
 			<Skeleton.Avatar size={56} active />
 			<Skeleton.Input style={{ width: 100 }} active size='small' />
 			<Skeleton.Button style={{ width: 100, height: 24 }} active size='small' />
@@ -102,7 +102,7 @@ const ProfileTooltip = ({ children }: Props) => {
 				zIndex={10}
 			>
 				<Link
-					className='bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary font-bold cursor-pointer'
+					className='cursor-pointer bg-gradient-to-r from-primary to-secondary bg-clip-text font-bold text-transparent'
 					href={`${window.location.origin}/channel/${getHandle()}`}
 				>
 					{children}

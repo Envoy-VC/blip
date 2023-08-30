@@ -38,7 +38,7 @@ const FollowingChannels = ({ profile }: Props) => {
 					</div>
 				}
 			>
-				<div className='grid justify-items-center grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 my-8'>
+				<div className='my-8 grid grid-cols-1 justify-items-center sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'>
 					{following.map((following, index) => (
 						<FollowingUserCard key={index} following={following} />
 					))}
@@ -48,7 +48,7 @@ const FollowingChannels = ({ profile }: Props) => {
 	}
 	if (loading)
 		return (
-			<div className='grid justify-items-center grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 my-8'>
+			<div className='my-8 grid grid-cols-1 justify-items-center sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'>
 				{Array(12)
 					.fill(1)
 					.map((_, i) => (

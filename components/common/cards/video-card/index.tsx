@@ -20,33 +20,33 @@ const VideoCard = ({ publication, isOnChannelPage }: Props) => {
 	let profile = video?.profile;
 	return (
 		<div
-			className='flex flex-col rounded-lg aspect-video cursor-pointer'
+			className='flex aspect-video cursor-pointer flex-col rounded-lg'
 			onClick={() => router.push(`/watch/${video?.id}`)}
 		>
 			<VideoCover
 				video={video}
 				height={224}
-				className='rounded-lg object-cover !w-[500px]'
+				className='!w-[500px] rounded-lg object-cover'
 				preview={false}
 			/>
-			<div className='flex flex-row items-start gap-3 mt-2'>
+			<div className='mt-2 flex flex-row items-start gap-3'>
 				<div>
 					<ProfileAvatar picture={profile?.picture || null} size={42} />
 				</div>
 				<div className='flex flex-col'>
-					<div className='text-[1rem] font-medium break-words font-sans'>
+					<div className='break-words font-sans text-[1rem] font-medium'>
 						{(video?.metadata.name || '').slice(0, 72)}
 					</div>
 					{!isOnChannelPage && (
-						<span className='text-[#a0a0a0] font-medium text-[1rem]'>
+						<span className='text-[1rem] font-medium text-[#a0a0a0]'>
 							{profile?.handle || ''}
 						</span>
 					)}
-					<div className='flex flex-row items-center gap-2 text-[#a0a0a0] font-medium text-sm'>
+					<div className='flex flex-row items-center gap-2 text-sm font-medium text-[#a0a0a0]'>
 						<span>
 							{formatFollowers(video?.stats?.totalUpvotes || 0)} likes
 						</span>
-						<span className='w-1 h-1 rounded-full bg-[#aaa]'></span>
+						<span className='h-1 w-1 rounded-full bg-[#aaa]'></span>
 						<span>{ISOTimeToTimeAgo(video?.createdAt || '')}</span>
 					</div>
 				</div>

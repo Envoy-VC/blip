@@ -68,7 +68,7 @@ const Sidebar = ({ sidebarOpen }: Props) => {
 
 	return (
 		<div
-			className={`p-4 overflow-y-scroll h-[91.5vh] custom-scrollbar shadow-sm hidden sm:flex pr-6 ${
+			className={`custom-scrollbar hidden h-[91.5vh] overflow-y-scroll p-4 pr-6 shadow-sm sm:flex ${
 				sidebarOpen && 'min-w-[14rem]'
 			}`}
 		>
@@ -102,7 +102,7 @@ const Sidebar = ({ sidebarOpen }: Props) => {
 						);
 				})}
 				{sidebarOpen && (
-					<div className='flex flex-col gap-1 mx-2'>
+					<div className='mx-2 flex flex-col gap-1'>
 						{profile && (
 							<>
 								<FollowingList profileId={profile.id} />

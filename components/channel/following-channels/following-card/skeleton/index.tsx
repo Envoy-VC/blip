@@ -3,7 +3,7 @@ import { Skeleton } from 'antd';
 
 const FollowingCardSkeleton = () => {
 	return (
-		<div className='flex flex-col justify-between w-fit p-4 items-center gap-1'>
+		<div className='flex w-fit flex-col items-center justify-between gap-1 p-4'>
 			<Skeleton.Avatar active size={96} shape='circle' />
 			<Skeleton.Button style={{ width: 128 }} active size='small' />
 			<Skeleton.Input style={{ width: 64 }} active size='small' />

@@ -31,7 +31,7 @@ const ChannelPage = ({ profile }: Props) => {
 		React.useState<MenuItemType>('home');
 	return (
 		<div className=''>
-			<div className='px-4 mx-auto max-w-screen-2xl'>
+			<div className='mx-auto max-w-screen-2xl px-4'>
 				<ChannelNavigation
 					activeMenuItem={activeMenuItem}
 					setActiveMenuItem={setActiveMenuItem}

@@ -22,7 +22,7 @@ interface MenuItemProps {
 const MenuItem = ({ label, icon, handleClick }: MenuItemProps) => {
 	return (
 		<div
-			className='flex flex-row gap-3 items-center py-[2px]'
+			className='flex flex-row items-center gap-3 py-[2px]'
 			onClick={handleClick}
 		>
 			{icon}
@@ -68,7 +68,7 @@ const InteractionButtons = () => {
 	};
 
 	return (
-		<div className='flex flex-row gap-1 items-center'>
+		<div className='flex flex-row items-center gap-1'>
 			<Button
 				type='text'
 				className='flex items-center justify-center gap-2'

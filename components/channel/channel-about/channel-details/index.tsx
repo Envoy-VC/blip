@@ -37,25 +37,25 @@ const ChannelDetails = ({ profile }: Props) => {
 
 	console.log(attributes);
 	return (
-		<div className='rounded-xl shadow-sm p-4'>
+		<div className='rounded-xl p-4 shadow-sm'>
 			<div className='flex flex-col gap-2'>
 				<div className='flex flex-col gap-2'>
 					<span className='text-xl font-semibold'>Description</span>
-					<p className='text-[1rem] whitespace-pre-wrap break-words max-w-md'>
+					<p className='max-w-md whitespace-pre-wrap break-words text-[1rem]'>
 						<ContentRenderer>{bio}</ContentRenderer>
 					</p>
 				</div>
-				<div className='border-[1px] my-2 border-[#eee]' />
+				<div className='my-2 border-[1px] border-[#eee]' />
 				<div className='flex flex-col gap-[6px]'>
-					<span className='text-xl font-semibold my-2 pb-2'>Details</span>
-					<div className='flex flex-row gap-2 items-start'>
+					<span className='my-2 pb-2 text-xl font-semibold'>Details</span>
+					<div className='flex flex-row items-start gap-2'>
 						<span className='text-[1rem] font-medium'>Interests: </span>
-						<div className='flex flex-row gap-1 flex-wrap'>
+						<div className='flex flex-row flex-wrap gap-1'>
 							{interestsArray?.map((interest, index) => {
 								return (
 									<div
 										key={index}
-										className='text-sm p-1 px-2 rounded-3xl border-[#b1b1b1] border-[1px]'
+										className='rounded-3xl border-[1px] border-[#b1b1b1] p-1 px-2 text-sm'
 									>
 										{interest}
 									</div>
@@ -68,13 +68,13 @@ const ChannelDetails = ({ profile }: Props) => {
 						<ProfileAttributes key={index} attributes={attributes} type={key} />
 					))}
 				</div>
-				<div className='border-[1px] my-2 border-[#eee]' />
+				<div className='my-2 border-[1px] border-[#eee]' />
 				<div className='flex flex-col'>
-					<span className='text-xl font-semibold my-2'>Others</span>
-					<div className='flex flex-row gap-2 items-center text-[1rem] '>
+					<span className='my-2 text-xl font-semibold'>Others</span>
+					<div className='flex flex-row items-center gap-2 text-[1rem]'>
 						<PiCurrencyEth size='20' />
 						<Link
-							className='font-sans hover:underline hover:text-primary'
+							className='font-sans hover:text-primary hover:underline'
 							href={`https://polygonscan.com/address/${ownedBy}`}
 						>
 							{ownedBy.slice(0, 5) + '...' + ownedBy.slice(-5)}
@@ -86,7 +86,7 @@ const ChannelDetails = ({ profile }: Props) => {
 							onClick={() => copyText(ownedBy)}
 						/>
 					</div>
-					<div className='flex flex-row gap-2 items-center text-[1rem] '>
+					<div className='flex flex-row items-center gap-2 text-[1rem] '>
 						<PiHash size='20' />
 						<span className='font-sans'>{id}</span>
 						<Button
@@ -97,10 +97,10 @@ const ChannelDetails = ({ profile }: Props) => {
 						/>
 					</div>
 					{!!onChainIdentity?.ens?.name && (
-						<div className='flex flex-row gap-2 items-center text-[1rem] '>
+						<div className='flex flex-row items-center gap-2 text-[1rem] '>
 							<PiIdentificationBadge size='20' />
 							<Link
-								className='font-sans hover:underline hover:text-primary'
+								className='font-sans hover:text-primary hover:underline'
 								href={`https://app.ens.domains/${
 									onChainIdentity?.ens?.name as string
 								}`}

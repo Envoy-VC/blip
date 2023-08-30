@@ -15,7 +15,7 @@ const VideoCommentBox = () => {
 			<div className='max-w-[40px]'>
 				<ProfileAvatar picture={activeProfile?.picture || null} size={40} />
 			</div>
-			<div className='flex flex-col items-end gap-2 w-full'>
+			<div className='flex w-full flex-col items-end gap-2'>
 				<ConfigProvider
 					theme={{
 						token: { controlOutline: 'none', colorPrimaryHover: 'none' },
@@ -41,7 +41,7 @@ const VideoCommentBox = () => {
 									/>
 								)}
 								trigger={['click']}
-								className='!p-0 flex items-center'
+								className='flex items-center !p-0'
 							>
 								<Button type='text' icon={<PiSmiley size='24' />} />
 							</Dropdown>
@@ -52,7 +52,7 @@ const VideoCommentBox = () => {
 					<Button
 						type='text'
 						shape='round'
-						className='bg-primary hover:!bg-secondary text-white hover:!text-white text-[1rem] flex items-center justify-center !py-[18px]'
+						className='flex items-center justify-center bg-primary !py-[18px] text-[1rem] text-white hover:!bg-secondary hover:!text-white'
 					>
 						Comment
 					</Button>

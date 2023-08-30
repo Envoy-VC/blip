@@ -44,7 +44,7 @@ const ProfileAttributes = ({ attributes, type }: Props) => {
 	if (!attributeData) return <div />;
 
 	return (
-		<div className='flex flex-row gap-2 items-center text-[1rem] '>
+		<div className='flex flex-row items-center gap-2 text-[1rem] '>
 			{attributeData.icon}
 			<span className='font-sans font-medium'>
 				{attributeData.label}:&nbsp;
@@ -54,7 +54,7 @@ const ProfileAttributes = ({ attributes, type }: Props) => {
 			)}
 			{attributeData.type === 'link' && (
 				<Link
-					className='font-sans hover:underline hover:text-primary'
+					className='font-sans hover:text-primary hover:underline'
 					href={getLink() || ''}
 					target='_blank'
 				>

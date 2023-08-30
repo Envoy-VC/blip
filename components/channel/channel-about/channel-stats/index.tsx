@@ -21,20 +21,20 @@ const ChannelStatistics = ({ profile }: Props) => {
 		stats: { totalPosts, totalFollowers },
 	} = profile;
 	return (
-		<div className='rounded-xl shadow-sm p-4 h-full'>
+		<div className='h-full rounded-xl p-4 shadow-sm'>
 			<div className='flex flex-col gap-2'>
-				<span className='text-xl font-semibold mb-4'>Statistics</span>
+				<span className='mb-4 text-xl font-semibold'>Statistics</span>
 				<div className='flex flex-row items-center gap-2'>
-					<span className='font-medium text-[1rem]'>Total Followers:</span>
+					<span className='text-[1rem] font-medium'>Total Followers:</span>
 					<span className='font-semibold'>
 						{formatFollowers(totalFollowers)}
 					</span>
 				</div>
 				<div className='flex flex-row items-center gap-2'>
-					<span className='font-medium text-[1rem]'>Posts:</span>
+					<span className='text-[1rem] font-medium'>Posts:</span>
 					<span className='font-semibold'>{totalPosts}</span>
 				</div>
-				<div className='flex flex-row gap-2 items-center my-4'>
+				<div className='my-4 flex flex-row items-center gap-2'>
 					<Button
 						type='text'
 						icon={<PiFlagBold size='20' color='#7e7e7e' />}

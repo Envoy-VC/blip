@@ -25,16 +25,16 @@ const Channel: NextPageWithLayout = () => {
 
 	if (loading) {
 		return (
-			<div className='flex flex-col w-full'>
-				<div className='flex items-center overflow-y-hidden max-h-[18rem] w-full select-none justify-center'>
+			<div className='flex w-full flex-col'>
+				<div className='flex max-h-[18rem] w-full select-none items-center justify-center overflow-y-hidden'>
 					<Skeleton.Image
-						className='object-cover min-w-full min-h-[18rem]'
+						className='min-h-[18rem] min-w-full object-cover'
 						active
 					/>
 				</div>
 				<ChannelDetailsSkeleton />
-				<div className='px-4 mx-auto max-w-screen-2xl'>
-					<div className='grid grid-cols-1 gap-4 my-12 2xl:grid-cols-4 md:grid-cols-2 xl:grid-cols-3'>
+				<div className='mx-auto max-w-screen-2xl px-4'>
+					<div className='my-12 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
 						{Array(8)
 							.fill(0)
 							.map((_, i) => (
@@ -46,7 +46,7 @@ const Channel: NextPageWithLayout = () => {
 		);
 	} else if (!loading || !!!activeProfile) {
 		return (
-			<div className='p-16 mx-auto text-lg font-semibold'>
+			<div className='mx-auto p-16 text-lg font-semibold'>
 				Sign-in with Lens to view your Channel
 			</div>
 		);

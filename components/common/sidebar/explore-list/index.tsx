@@ -24,7 +24,7 @@ interface Props {
 const ExploreList = ({ sidebarOpen }: Props) => {
 	return (
 		<div className='flex flex-col gap-1 '>
-			<span className='text-[1rem] mt-2 font-sans font-medium m-2'>
+			<span className='m-2 mt-2 font-sans text-[1rem] font-medium'>
 				Explore
 			</span>
 			{ExploreItems.map((item, index) => (

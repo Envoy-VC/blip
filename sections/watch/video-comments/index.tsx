@@ -48,9 +48,9 @@ const VideoComments = () => {
 	];
 
 	return (
-		<div className='flex flex-col gap-2 m-2 mb-8'>
+		<div className='m-2 mb-8 flex flex-col gap-2'>
 			<div className='flex flex-row items-center justify-between'>
-				<span className='font-sans font-medium text-lg'>
+				<span className='font-sans text-lg font-medium'>
 					{(comments?.length || 0) > 1
 						? `${comments?.length} Comments`
 						: `${comments?.length} Comment`}
@@ -58,11 +58,11 @@ const VideoComments = () => {
 				<Dropdown menu={{ items }} trigger={['click']}>
 					<Button
 						type='text'
-						className='flex flex-row gap-2 items-center'
+						className='flex flex-row items-center gap-2'
 						size='large'
 					>
 						<PiFunnelSimpleBold size='24' />
-						<div className='sm:flex text-[1rem] hidden font-medium'>Filter</div>
+						<div className='hidden text-[1rem] font-medium sm:flex'>Filter</div>
 					</Button>
 				</Dropdown>
 			</div>
@@ -70,7 +70,7 @@ const VideoComments = () => {
 			{!comments ? (
 				<div>loading...</div>
 			) : (
-				<div className='flex flex-col my-2'>
+				<div className='my-2 flex flex-col'>
 					{(comments as Comment[]).map((comment) => (
 						<CommentPill comment={comment} key={comment.id} />
 					))}
@@ -80,7 +80,7 @@ const VideoComments = () => {
 				<Button
 					type='text'
 					size='large'
-					className='text-[1rem] font-medium bg-primary hover:!bg-[#2f55ebd0] text-white hover:!text-white my-4 w-fit'
+					className='my-4 w-fit bg-primary text-[1rem] font-medium text-white hover:!bg-[#2f55ebd0] hover:!text-white'
 					onClick={handleShowMore}
 				>
 					{isNextLoading ? (

@@ -22,14 +22,14 @@ const VideoDetails = () => {
 	} = post!;
 	const [showDescription, setShowDescription] = React.useState<boolean>(false);
 	return (
-		<div className='flex flex-col m-2'>
-			<span className='text-xl font-medium font-sans'>{videoTitle || ''}</span>
-			<div className='flex flex-row justify-between items-center'>
-				<div className='flex flex-row gap-2 items-center'>
+		<div className='m-2 flex flex-col'>
+			<span className='font-sans text-xl font-medium'>{videoTitle || ''}</span>
+			<div className='flex flex-row items-center justify-between'>
+				<div className='flex flex-row items-center gap-2'>
 					<div>
 						<ProfileAvatar picture={picture || null} size={42} />
 					</div>
-					<div className='flex flex-col font-semibold font-sans'>
+					<div className='flex flex-col font-sans font-semibold'>
 						<span className='text-lg'>{name || ''}</span>
 						<span className='text-sm text-[#aaa]'>
 							{formatFollowers(totalFollowers || 0)} followers
@@ -38,18 +38,18 @@ const VideoDetails = () => {
 				</div>
 				<InteractionButtons />
 			</div>
-			<div className='flex flex-col gap-1 my-4 items-start'>
-				<span className='text-[1rem] font-medium font-sans'>
+			<div className='my-4 flex flex-col items-start gap-1'>
+				<span className='font-sans text-[1rem] font-medium'>
 					{ISOTimeToDay(createdAt || '')}
 				</span>
-				<div className='font-sans font-medium whitespace-pre-wrap break-words max-w-sm sm:max-w-2xl text-[1rem] px-1 sm:px-0'>
+				<div className='max-w-sm whitespace-pre-wrap break-words px-1 font-sans text-[1rem] font-medium sm:max-w-2xl sm:px-0'>
 					<ContentRenderer showFull={showDescription}>
 						{content}
 					</ContentRenderer>
 				</div>
 				<Button
 					type='link'
-					className='font-medium !px-0'
+					className='!px-0 font-medium'
 					onClick={() => setShowDescription(!showDescription)}
 				>
 					{showDescription ? 'Show less' : 'Show more'}

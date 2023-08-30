@@ -34,7 +34,7 @@ interface DropdownItemProps {
 const DropDownItem = ({ name, icon, handleClick }: DropdownItemProps) => {
 	return (
 		<div
-			className='flex flex-row gap-3 items-center py-[2px]'
+			className='flex flex-row items-center gap-3 py-[2px]'
 			onClick={handleClick}
 		>
 			{icon}
@@ -82,7 +82,7 @@ const UserDropdown = ({ children, profile }: Props) => {
 		{
 			key: '1',
 			label: (
-				<div className='flex flex-row items-center w-full max-w-sm gap-3'>
+				<div className='flex w-full max-w-sm flex-row items-center gap-3'>
 					<div className='max-w-[40px]'>
 						<ProfileAvatar
 							picture={profile?.picture || null}
@@ -94,7 +94,7 @@ const UserDropdown = ({ children, profile }: Props) => {
 						<span className='text-[1rem] font-bold'>
 							{profile?.name?.slice(0, 15) || ''}
 						</span>
-						<span className='text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-30% from-primary to-secondary'>
+						<span className='bg-gradient-to-r from-primary from-30% to-secondary bg-clip-text text-sm font-bold text-transparent'>
 							{profile?.handle.slice(0, 22) || ''}
 						</span>
 					</div>

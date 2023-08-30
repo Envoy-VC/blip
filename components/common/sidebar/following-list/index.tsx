@@ -13,7 +13,7 @@ interface FollowingListProps {
 }
 
 const ProfileCardLoader = () => (
-	<div className='flex flex-row items-center gap-2 my-1'>
+	<div className='my-1 flex flex-row items-center gap-2'>
 		<Skeleton.Avatar shape='circle' active size={32} />
 		<Skeleton.Button active size='small' shape='round' block />
 	</div>
@@ -31,8 +31,8 @@ const FollowingList = ({ profileId }: FollowingListProps) => {
 	});
 	return (
 		<>
-			<div className='flex flex-row items-center justify-between mx-2'>
-				<span className='text-[1rem] font-sans font-medium'>Following</span>
+			<div className='mx-2 flex flex-row items-center justify-between'>
+				<span className='font-sans text-[1rem] font-medium'>Following</span>
 				<Button
 					icon={<PiMagnifyingGlass size={20} />}
 					type='text'
@@ -53,7 +53,7 @@ const FollowingList = ({ profileId }: FollowingListProps) => {
 					<Input
 						placeholder='Search'
 						size='small'
-						className='w-full rounded-lg py-1 text-[0.8rem] max-w-[10rem] mx-2'
+						className='mx-2 w-full max-w-[10rem] rounded-lg py-1 text-[0.8rem]'
 					/>
 				</ConfigProvider>
 			)}
@@ -68,9 +68,9 @@ const FollowingList = ({ profileId }: FollowingListProps) => {
 						key={index}
 						type='text'
 						size='large'
-						className='flex flex-row justify-between items-center gap-3 py-[6px] rounded-lg px-2 group'
+						className='group flex flex-row items-center justify-between gap-3 rounded-lg px-2 py-[6px]'
 					>
-						<div className='min-w-[36px] group-hover:border-2 group-hover:border-primary flex justify-center items-center rounded-full transition-all duration-300 ease-in-out'>
+						<div className='flex min-w-[36px] items-center justify-center rounded-full transition-all duration-300 ease-in-out group-hover:border-2 group-hover:border-primary'>
 							<ProfileAvatar
 								picture={follower.wallet.defaultProfile?.picture || null}
 								size={30}
@@ -80,7 +80,7 @@ const FollowingList = ({ profileId }: FollowingListProps) => {
 								className='m-[1px]'
 							/>
 						</div>
-						<span className='text-[1rem] font-medium font-sans group-hover:text-primary transition-all duration-300 ease-in-out'>
+						<span className='font-sans text-[1rem] font-medium transition-all duration-300 ease-in-out group-hover:text-primary'>
 							{follower.wallet.defaultProfile?.name?.slice(0, 10) || 'Unknown'}
 						</span>
 						<span className='font-sans text-sm text-gray-500 transition-all duration-300 ease-in-out group-hover:text-primary'>
@@ -93,10 +93,10 @@ const FollowingList = ({ profileId }: FollowingListProps) => {
 			{hasMore && (
 				<Button
 					type='link'
-					className='flex flex-row items-center gap-3 py-[6px] rounded-xl px-2'
+					className='flex flex-row items-center gap-3 rounded-xl px-2 py-[6px]'
 				>
 					<PiCaretDown size={20} color='#0F61FF' />
-					<span className='text-[1rem] font-semibold font-sans text-primary'>
+					<span className='font-sans text-[1rem] font-semibold text-primary'>
 						Show more
 					</span>
 				</Button>

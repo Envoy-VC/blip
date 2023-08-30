@@ -27,7 +27,7 @@ const FilterBar = () => {
 	};
 
 	return (
-		<div className='flex flex-row items-center mx-4 gap-2'>
+		<div className='mx-4 flex flex-row items-center gap-2'>
 			<Button
 				type='text'
 				icon={<PiCaretLeftBold size={16} />}
@@ -36,7 +36,7 @@ const FilterBar = () => {
 				onClick={() => handleScroll('left')}
 			/>
 			<div
-				className='overflow-x-scroll scrollbar-hide'
+				className='scrollbar-hide overflow-x-scroll'
 				ref={filterBarRef}
 				style={{ scrollBehavior: 'smooth' }}
 			>
@@ -46,7 +46,7 @@ const FilterBar = () => {
 							key={tagData.name}
 							checked={tag === tagData.name}
 							onChange={(checked) => handleChange(tagData.name, checked)}
-							className='text-[1rem] font-semibold px-2 py-1'
+							className='px-2 py-1 text-[1rem] font-semibold'
 						>
 							{tagData.label}
 						</Tag.CheckableTag>

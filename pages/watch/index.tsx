@@ -12,8 +12,8 @@ const Watch: NextPageWithLayout = () => {
 	const router = useRouter();
 	const [searchInput, setSearchInput] = React.useState<string>('');
 	return (
-		<div className='p-8 mx-auto border-2'>
-			<span className=' text-lg font-medium font-sans'>
+		<div className='mx-auto border-2 p-8'>
+			<span className=' font-sans text-lg font-medium'>
 				Enter a Publication Id to watch a Video
 			</span>
 			<Space.Compact style={{ width: '100%' }} className='my-4'>

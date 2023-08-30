@@ -3,9 +3,9 @@ import { Skeleton } from 'antd';
 
 const RecommendedVideoCardSkeleton = () => {
 	return (
-		<div className='rounded-md flex flex-row items-start gap-2'>
+		<div className='flex flex-row items-start gap-2 rounded-md'>
 			<Skeleton.Image
-				className='min-w-[160px] max-h-[96px] w-full h-full aspect-video object-cover rounded-md'
+				className='aspect-video h-full max-h-[96px] w-full min-w-[160px] rounded-md object-cover'
 				active
 			/>
 			<div className='flex flex-col gap-1'>

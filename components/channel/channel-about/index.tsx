@@ -10,11 +10,11 @@ interface Props {
 
 const ChannelAbout = ({ profile }: Props) => {
 	return (
-		<div className='flex flex-col lg:flex-row gap-6 my-6'>
-			<div className='basis-2/3 w-full'>
+		<div className='my-6 flex flex-col gap-6 lg:flex-row'>
+			<div className='w-full basis-2/3'>
 				<ChannelDetails profile={profile} />
 			</div>
-			<div className='basis-1/3 w-full'>
+			<div className='w-full basis-1/3'>
 				<ChannelStatistics profile={profile} />
 			</div>
 		</div>

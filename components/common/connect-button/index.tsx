@@ -19,7 +19,7 @@ const ConnectButton = () => {
 
 	const { data: profile } = useActiveProfile();
 
-	if (wallet === null || wallet === undefined ) {
+	if (wallet === null || wallet === undefined) {
 		return (
 			<>
 				<ConfigProvider
@@ -31,7 +31,7 @@ const ConnectButton = () => {
 					}}
 				>
 					<Button
-						className='bg-[#3d81ff] !rounded-3xl !p-5 !px-8 text-white hover:!text-white !text-[1rem] flex items-center'
+						className='flex items-center !rounded-3xl bg-[#3d81ff] !p-5 !px-8 !text-[1rem] text-white hover:!text-white'
 						onClick={() => {
 							setIsLoggingIn(true);
 							setWalletModalOpen(true);
@@ -62,9 +62,9 @@ const ConnectButton = () => {
 				<Button
 					type='text'
 					size='large'
-					className='!p-7 flex items-center justify-center hover:!bg-transparent'
+					className='flex items-center justify-center !p-7 hover:!bg-transparent'
 					icon={
-						<div className='max-w-[46px] border-2 border-primary flex justify-center items-center rounded-full'>
+						<div className='flex max-w-[46px] items-center justify-center rounded-full border-2 border-primary'>
 							<ProfileAvatar
 								picture={profile?.picture || null}
 								width='42'

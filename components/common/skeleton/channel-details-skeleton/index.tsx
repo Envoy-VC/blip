@@ -3,8 +3,8 @@ import { Skeleton } from 'antd';
 
 const ChannelDetailsSkeleton = () => {
 	return (
-		<div className='w-full p-4 mx-auto select-none max-w-screen-2xl'>
-			<div className='flex flex-col items-start justify-between gap-8 md:items-center md:flex-row'>
+		<div className='mx-auto w-full max-w-screen-2xl select-none p-4'>
+			<div className='flex flex-col items-start justify-between gap-8 md:flex-row md:items-center'>
 				<div className='flex flex-row items-center gap-2'>
 					<div className='max-w-[6.75rem]'>
 						<Skeleton.Avatar shape='circle' size={96} active />

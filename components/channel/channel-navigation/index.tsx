@@ -16,7 +16,7 @@ const items: MenuItemProps[] = [
 const MenuItem = ({ label, handleClick }: MenuItemProps) => {
 	return (
 		<div
-			className='px-5 font-medium hover:bg-[rgba(15,97,255,0.1)]  rounded-t-lg'
+			className='rounded-t-lg px-5 font-medium  hover:bg-[rgba(15,97,255,0.1)]'
 			onClick={handleClick}
 		>
 			{label}

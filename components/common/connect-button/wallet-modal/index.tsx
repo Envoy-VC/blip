@@ -115,11 +115,11 @@ const WalletModal = ({
 				zIndex={10}
 			>
 				{!isConnected && (
-					<div className='flex flex-col gap-2 my-8'>
+					<div className='my-8 flex flex-col gap-2'>
 						{wallets.map((wallet, index) => (
 							<Button
 								key={index}
-								className='p-3 flex flex-row gap-6 items-center justify-start cursor-pointer !rounded-lg border-none !py-6'
+								className='flex cursor-pointer flex-row items-center justify-start gap-6 !rounded-lg border-none p-3 !py-6'
 								size='large'
 								shape='default'
 								type='text'
@@ -133,7 +133,7 @@ const WalletModal = ({
 									preview={false}
 									width={30}
 								/>
-								<span className='text-[1rem] font-medium font-sans'>
+								<span className='font-sans text-[1rem] font-medium'>
 									{wallet.label}
 								</span>
 							</Button>
@@ -141,7 +141,7 @@ const WalletModal = ({
 					</div>
 				)}
 				{isConnected && (
-					<div className='flex flex-col gap-2 my-4 w-fit'>
+					<div className='my-4 flex w-fit flex-col gap-2'>
 						<div className='my-4 font-sans text-sm font-medium'>
 							Authenticate with Lens to access features like Uploading videos,
 							Interacting with videos, etc.
@@ -155,7 +155,7 @@ const WalletModal = ({
 							}}
 						>
 							<Button
-								className='bg-[#3d81ff] !rounded-3xl !p-5 !px-8 text-white hover:!text-white !text-[1rem] flex items-center justify-start  w-fit'
+								className='flex w-fit items-center justify-start !rounded-3xl bg-[#3d81ff] !p-5 !px-8 !text-[1rem] text-white  hover:!text-white'
 								size='large'
 								onClick={loginWithLens}
 								disabled={isLensLoggingIn}
