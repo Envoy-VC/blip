@@ -1,5 +1,4 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import { Select, ConfigProvider } from 'antd';
 import {
 	ProfileId,
@@ -16,7 +15,6 @@ interface Props {
 }
 
 const FeedSwitcher = ({ feedProfileId, setFeedProfileId }: Props) => {
-	const router = useRouter();
 	const [value, setValue] = React.useState<string>('');
 	console.log(feedProfileId);
 	const { data: profile } = useProfile({ profileId: feedProfileId });
@@ -50,7 +48,6 @@ const FeedSwitcher = ({ feedProfileId, setFeedProfileId }: Props) => {
 					onSelect={(value: string) => {
 						localStorage.setItem('feedProfileId', value);
 						handleSelect(value);
-						router.reload();
 					}}
 					size='large'
 				>
