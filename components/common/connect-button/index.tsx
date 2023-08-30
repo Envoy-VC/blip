@@ -1,7 +1,5 @@
 import React from 'react';
-import { Button, Badge, ConfigProvider } from 'antd';
-
-import { useAccount } from 'wagmi';
+import { Button, ConfigProvider } from 'antd';
 
 import { useActiveWallet, useActiveProfile } from '@lens-protocol/react-web';
 
@@ -9,7 +7,6 @@ import UserDropdown from './user-dropdown';
 import WalletModal from './wallet-modal';
 import { Notifications } from '@/components/common';
 
-import { PiVideoCamera } from 'react-icons/pi';
 import { ProfileAvatar } from '..';
 
 const ConnectButton = () => {
@@ -56,7 +53,6 @@ const ConnectButton = () => {
 
 	return (
 		<div className='flex flex-row items-center gap-4'>
-			<Button icon={<PiVideoCamera size={26} />} type='text' size='large' />
 			<Notifications profileId={profile?.id!} />
 			<UserDropdown profile={profile!}>
 				<Button

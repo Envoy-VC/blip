@@ -4,7 +4,7 @@ import { useTheme } from 'next-themes';
 import { Toaster } from 'react-hot-toast';
 
 // Components
-import { SEO, Navbar, Sidebar } from '@/components/common';
+import { SEO, Navbar, Sidebar, MobileNavbar } from '@/components/common';
 
 // UI
 import { Inter } from 'next/font/google';
@@ -58,6 +58,7 @@ const NestedLayout = ({ children }: Props) => {
 							/>
 							{children}
 						</div>
+						<MobileNavbar />
 						<Toaster position='bottom-left' />
 					</div>
 				</ConfigProvider>

@@ -16,7 +16,6 @@ interface Props {
 
 const FeedSwitcher = ({ feedProfileId, setFeedProfileId }: Props) => {
 	const [value, setValue] = React.useState<string>('');
-	console.log(feedProfileId);
 	const { data: profile } = useProfile({ profileId: feedProfileId });
 	const { data, loading } = useSearchProfiles({ query: value });
 
