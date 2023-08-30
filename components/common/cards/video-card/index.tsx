@@ -33,13 +33,13 @@ const VideoCard = ({ publication, isOnChannelPage }: Props) => {
 				<div>
 					<ProfileAvatar picture={profile?.picture || null} size={42} />
 				</div>
-				<div className='flex flex-col'>
+				<div className='flex flex-col justify-between'>
 					<div className='break-words font-sans text-[1rem] font-medium'>
 						{(video?.metadata.name || '').slice(0, 72)}
 					</div>
 					{!isOnChannelPage && (
-						<span className='text-[1rem] font-medium text-[#a0a0a0]'>
-							{profile?.handle || ''}
+						<span className='text-[1rem] font-medium text-[#a0a0a0] truncate'>
+							{profile?.name || profile?.handle}
 						</span>
 					)}
 					<div className='flex flex-row items-center gap-2 text-sm font-medium text-[#a0a0a0]'>
