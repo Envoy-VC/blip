@@ -50,7 +50,7 @@ const MobileNavbar = () => {
 		},
 	];
 	return (
-		<div className='sticky bottom-0 flex w-full flex-row justify-around border-2 bg-white py-2 dark:bg-[#121212] sm:hidden'>
+		<div className='sticky bottom-0 z-[100] flex w-full flex-row  justify-around bg-white py-2 shadow-md dark:bg-[#121212] sm:hidden'>
 			{NavbarItems.map((item, index) => (
 				<div className='flex flex-col items-center justify-between' key={index}>
 					<Button

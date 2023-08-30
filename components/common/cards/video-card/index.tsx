@@ -26,7 +26,7 @@ const VideoCard = ({ publication, isOnChannelPage }: Props) => {
 			<VideoCover
 				video={video}
 				height={224}
-				className='!w-[500px] rounded-lg object-cover'
+				className='rounded-lg object-cover !w-[500px]'
 				preview={false}
 			/>
 			<div className='mt-2 flex flex-row items-start gap-3'>
@@ -38,7 +38,7 @@ const VideoCard = ({ publication, isOnChannelPage }: Props) => {
 						{(video?.metadata.name || '').slice(0, 72)}
 					</div>
 					{!isOnChannelPage && (
-						<span className='text-[1rem] font-medium text-[#a0a0a0] truncate'>
+						<span className='truncate text-[1rem] font-medium text-[#a0a0a0]'>
 							{profile?.name || profile?.handle}
 						</span>
 					)}
