@@ -1,6 +1,7 @@
 import React from 'react';
-import { Dropdown, Avatar, Divider } from 'antd';
+import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
+import { Dropdown, Divider } from 'antd';
 import { ProfileOwnedByMe, useWalletLogout } from '@lens-protocol/react-web';
 
 import { ProfileAvatar } from '../..';
@@ -32,6 +33,7 @@ interface DropdownItemProps {
 }
 
 const DropDownItem = ({ name, icon, handleClick }: DropdownItemProps) => {
+	const router = useRouter();
 	return (
 		<div
 			className='flex flex-row items-center gap-3 py-[2px]'
@@ -44,12 +46,14 @@ const DropDownItem = ({ name, icon, handleClick }: DropdownItemProps) => {
 };
 
 const UserDropdown = ({ children, profile }: Props) => {
+	const router = useRouter();
 	const { theme, setTheme } = useTheme();
 	const { execute: logout } = useWalletLogout();
 	const dropdownItems: DropdownItemProps[] = [
 		{
 			name: 'Your channel',
 			icon: <PiVideo size={24} />,
+			handleClick: () => router.push(`/channel/${profile.handle}`),
 		},
 		{
 			name: 'Studio',
