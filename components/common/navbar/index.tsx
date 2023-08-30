@@ -1,18 +1,21 @@
-import React from 'react';
+import { Button, ConfigProvider, Input, Tooltip } from 'antd';
+import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button, ConfigProvider, Input, Tooltip } from 'antd';
+import React from 'react';
 
 // Components
 import ConnectButton from '../connect-button';
 
 // Icons
-import {
-	PiMagnifyingGlass,
-	PiMicrophoneBold,
-	PiMapTrifold,
-} from 'react-icons/pi';
 import BlipLogo from '@/public/logo.svg';
+import {
+	PiCloudMoon,
+	PiCloudSun,
+	PiMagnifyingGlass,
+	PiMapTrifold,
+	PiMicrophoneBold,
+} from 'react-icons/pi';
 
 interface Props {
 	sidebarOpen: boolean;
@@ -20,6 +23,7 @@ interface Props {
 }
 
 const Navbar = ({ sidebarOpen, setSideBarOpen }: Props) => {
+	const { theme, setTheme } = useTheme();
 	return (
 		<div className='select-none border-b-gray-200 p-2 px-3'>
 			<div className='flex flex-row items-center justify-between'>
@@ -93,6 +97,20 @@ const Navbar = ({ sidebarOpen, setSideBarOpen }: Props) => {
 							/>
 						</Link>
 					</Tooltip>
+					<Button
+						type='text'
+						shape='circle'
+						icon={
+							theme === 'dark' ? (
+								<PiCloudSun size={24} />
+							) : (
+								<PiCloudMoon size={24} />
+							)
+						}
+						onClick={() => {
+							setTheme(theme === 'dark' ? 'light' : 'dark');
+						}}
+					/>
 					<ConnectButton />
 				</div>
 			</div>
