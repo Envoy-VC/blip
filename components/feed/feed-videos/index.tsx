@@ -56,7 +56,7 @@ const FeedVideos = ({ tag, setTag, feedProfileId }: Props) => {
 	return (
 		<>
 			{loading && (
-				<div className='my-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
+				<div className='grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
 					{Array(4)
 						.fill(1)
 						.map((_, i) => (

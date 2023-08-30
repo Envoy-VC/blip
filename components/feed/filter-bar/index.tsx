@@ -30,7 +30,7 @@ const FilterBar = ({ tag, setTag }: Props) => {
 	};
 
 	return (
-		<div className='mx-4 flex flex-row items-center gap-2'>
+		<div className='flex flex-row items-center gap-2'>
 			<Button
 				type='text'
 				icon={<PiCaretLeftBold size={16} />}
@@ -43,7 +43,7 @@ const FilterBar = ({ tag, setTag }: Props) => {
 				ref={filterBarRef}
 				style={{ scrollBehavior: 'smooth' }}
 			>
-				<div className='flex flex-row gap-2 '>
+				<div className='flex flex-row items-center gap-2'>
 					{tagsData.map((tagData, index) => (
 						<Tag.CheckableTag
 							key={tagData.name}
