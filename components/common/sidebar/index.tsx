@@ -10,6 +10,7 @@ import ExploreList from './explore-list';
 // Icons
 import {
 	PiFilmStrip,
+	PiSignature,
 	PiHouseSimple,
 	PiBookmarksSimple,
 	PiVideo,
@@ -37,6 +38,11 @@ const Sidebar = ({ sidebarOpen }: Props) => {
 			name: 'Home',
 			icon: <PiHouseSimple size={20} />,
 			handleClick: () => router.push('/'),
+		},
+		{
+			name: 'Feed',
+			icon: <PiSignature size={20} />,
+			handleClick: () => router.push('/feed'),
 		},
 		{
 			name: 'Shorts',
@@ -68,7 +74,7 @@ const Sidebar = ({ sidebarOpen }: Props) => {
 
 	return (
 		<div
-			className={`custom-scrollbar hidden h-[91.5vh] overflow-y-scroll p-4 pr-6 shadow-sm sm:flex ${
+			className={`custom-scrollbar hidden p-4 pr-6 shadow-sm sm:flex ${
 				sidebarOpen && 'min-w-[14rem]'
 			}`}
 		>
