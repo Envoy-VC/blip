@@ -4,8 +4,11 @@ import Layout from '@/components/common/layout';
 import NestedLayout from '@/components/common/layout/nested-layout';
 import type { NextPageWithLayout } from '../_app';
 
-import { useActiveProfile } from '@lens-protocol/react-web';
 import { Spin } from 'antd';
+import { useActiveProfile } from '@lens-protocol/react-web';
+
+// Components
+import NotificationsPage from '@/sections/notifications';
 
 // Icons
 import { LoadingOutlined } from '@ant-design/icons';
@@ -26,7 +29,7 @@ const Notifications: NextPageWithLayout = () => {
 			</div>
 		);
 
-	if (!!activeProfile) return <>{activeProfile.name}</>;
+	if (!!activeProfile) return <NotificationsPage />;
 };
 
 Notifications.getLayout = function getLayout(page: ReactElement) {
