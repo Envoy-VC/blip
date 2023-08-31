@@ -1,11 +1,15 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import {
 	ProfileId,
 	useNotifications,
 	Notification,
 } from '@lens-protocol/react-web';
 
-import { Dropdown, Button } from 'antd';
+import { Dropdown, Button, Spin } from 'antd';
+
+// Icons
+import { LoadingOutlined } from '@ant-design/icons';
 
 // Types
 import type { MenuProps } from 'antd';
@@ -52,31 +56,108 @@ const NotificationDropdown = ({
 	dropdownOpen,
 	setDropdownOpen,
 }: Props) => {
-	const {
-		data: notifications,
-		loading,
-		hasMore,
-		next,
-	} = useNotifications({
+	const router = useRouter();
+	const { data: notifications, loading } = useNotifications({
 		profileId: profileId,
 		limit: 10,
 	});
 
 	const handleMenuClick = () => {};
 
+	const HeaderItem: MenuProps['items'] = [
+		{
+			key: 'header',
+			label: (
+				<div className='flex flex-row items-center justify-between py-2'>
+					<span className='text-[1rem] font-semibold'>Notifications</span>
+					<Button
+						type='link'
+						size='middle'
+						onClick={() => {
+							setDropdownOpen(false);
+							router.push('/notifications');
+						}}
+					>
+						View more
+					</Button>
+				</div>
+			),
+		},
+	];
+
+	if (loading) {
+		return (
+			<Dropdown
+				trigger={['click']}
+				menu={{
+					items: [
+						...HeaderItem,
+						{
+							key: 'loading',
+							label: (
+								<div className='flex justify-center py-4'>
+									<Spin
+										indicator={
+											<LoadingOutlined style={{ fontSize: 24 }} spin />
+										}
+									/>
+								</div>
+							),
+						},
+					],
+					onClick: handleMenuClick,
+				}}
+				dropdownRender={(menu) => (
+					<div className='scrollbar-hide mx-4'>
+						{React.cloneElement(menu as React.ReactElement, {
+							className: 'min-w-[400px]',
+						})}
+					</div>
+				)}
+				open={dropdownOpen}
+				placement='bottom'
+			>
+				{children}
+			</Dropdown>
+		);
+	}
+
+	if (!loading && !!notifications && notifications.length === 0) {
+		return (
+			<Dropdown
+				trigger={['click']}
+				menu={{
+					items: [
+						...HeaderItem,
+						{
+							key: 'no-notifications',
+							label: (
+								<div className='flex justify-center py-4 text-sm font-medium'>
+									No notifications
+								</div>
+							),
+						},
+					],
+					onClick: handleMenuClick,
+				}}
+				dropdownRender={(menu) => (
+					<div className='scrollbar-hide mx-4'>
+						{React.cloneElement(menu as React.ReactElement, {
+							className: 'min-w-[400px]',
+						})}
+					</div>
+				)}
+				open={dropdownOpen}
+				placement='bottom'
+			>
+				{children}
+			</Dropdown>
+		);
+	}
+
 	if (!!notifications && !loading) {
 		const items: MenuProps['items'] = [
-			{
-				key: 'header',
-				label: (
-					<div className='flex flex-row items-center justify-between py-2'>
-						<span className='text-[1rem] font-semibold'>Notifications</span>
-						<Button type='link' size='middle'>
-							View more
-						</Button>
-					</div>
-				),
-			},
+			HeaderItem[0],
 			...notifications.map((notification) => {
 				return {
 					key: notification.notificationId,
