@@ -4,9 +4,8 @@ import {
 	useNotifications,
 	Notification,
 } from '@lens-protocol/react-web';
-import InfiniteScroll from 'react-infinite-scroll-component';
 
-import { Dropdown } from 'antd';
+import { Dropdown, Button } from 'antd';
 
 // Types
 import type { MenuProps } from 'antd';
@@ -67,6 +66,17 @@ const NotificationDropdown = ({
 
 	if (!!notifications && !loading) {
 		const items: MenuProps['items'] = [
+			{
+				key: 'header',
+				label: (
+					<div className='flex flex-row items-center justify-between py-2'>
+						<span className='text-[1rem] font-semibold'>Notifications</span>
+						<Button type='link' size='middle'>
+							View more
+						</Button>
+					</div>
+				),
+			},
 			...notifications.map((notification) => {
 				return {
 					key: notification.notificationId,
