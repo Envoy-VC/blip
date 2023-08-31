@@ -20,16 +20,16 @@ const VideoCard = ({ publication, isOnChannelPage }: Props) => {
 	let profile = video?.profile;
 	return (
 		<div
-			className='flex aspect-video cursor-pointer flex-col rounded-lg'
+			className='flex aspect-video cursor-pointer flex-col sm:rounded-lg'
 			onClick={() => router.push(`/watch/${video?.id}`)}
 		>
 			<VideoCover
 				video={video}
 				height={224}
-				className='rounded-lg object-cover !w-[500px]'
+				className='sm:rounded-lg object-cover !w-[500px]'
 				preview={false}
 			/>
-			<div className='mt-2 flex flex-row items-start gap-3'>
+			<div className='mt-2 flex flex-row items-start gap-3 sm:mx-0 mx-2'>
 				<div>
 					<ProfileAvatar picture={profile?.picture || null} size={42} />
 				</div>

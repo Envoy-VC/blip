@@ -56,9 +56,9 @@ const Home: NextPageWithLayout = () => {
 		metadataFilter: filter(tag),
 	});
 	return (
-		<div className='grid grid-cols-1 place-content-start items-start'>
+		<div className='mx-0 grid grid-cols-1 place-content-start items-start sm:mx-4'>
 			<FilterBar />
-			<div className='flex flex-col px-2'>
+			<div className='flex flex-col px-0 sm:px-2'>
 				{loading && (
 					<div className='my-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
 						{Array(16)
