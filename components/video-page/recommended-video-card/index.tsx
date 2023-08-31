@@ -34,6 +34,7 @@ const RecommendedVideoCard = ({ video }: Props) => {
 				video={video}
 				preview={false}
 				className='aspect-video h-full max-h-[96px] w-full min-w-[160px] rounded-md object-cover'
+				showDuration={false}
 			/>
 			<div className='flex flex-col gap-1'>
 				<div className='max-w-[200px] break-all font-sans text-xs font-semibold 2xl:text-sm'>

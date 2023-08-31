@@ -7,9 +7,10 @@ import VideoFallbackImage from '@/public/video-fallback.png';
 
 interface Props extends ImageProps {
 	video: Post | null;
+	showDuration?: boolean;
 }
 
-const VideoCover = ({ video, ...props }: Props) => {
+const VideoCover = ({ video, showDuration = true, ...props }: Props) => {
 	const getImageData = (): { src: string; alt: string } => {
 		let metadata = video?.metadata;
 		let videoMedia = metadata?.media?.at(0);
@@ -40,9 +41,11 @@ const VideoCover = ({ video, ...props }: Props) => {
 	});
 	let { src, alt } = getImageData();
 	return (
-		<div className='relative w-full'>
+		<div className='relative'>
 			{!!videoDuration && videoDuration?.value && (
-				<div className='absolute bottom-0 right-0 z-10 m-3 rounded-lg bg-[#d3d3d38e] px-1 font-sans text-sm font-medium text-[#1d1d1d]'>
+				<div
+					className={`absolute bottom-0 right-0 z-10 m-3 rounded-lg bg-[#d3d3d38e] px-1 font-sans text-sm font-medium text-[#1d1d1d]`}
+				>
 					{formatVideoDuration(videoDuration?.value)}
 				</div>
 			)}

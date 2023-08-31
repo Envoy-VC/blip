@@ -49,14 +49,21 @@ const NestedLayout = ({ children }: Props) => {
 					}}
 				>
 					<SEO />
-					<div className={`flex flex-col ${inter.className}`}>
-						<Navbar sidebarOpen={sidebarOpen} setSideBarOpen={setSidebarOpen} />
-						<div className='flex flex-row'>
-							<Sidebar
+					<div
+						className={`flex flex-col ${inter.className} h-screen justify-between`}
+					>
+						<div className='flex flex-col'>
+							<Navbar
 								sidebarOpen={sidebarOpen}
 								setSideBarOpen={setSidebarOpen}
 							/>
-							{children}
+							<div className='flex flex-row'>
+								<Sidebar
+									sidebarOpen={sidebarOpen}
+									setSideBarOpen={setSidebarOpen}
+								/>
+								{children}
+							</div>
 						</div>
 						<MobileNavbar />
 						<Toaster position='bottom-left' />

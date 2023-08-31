@@ -35,7 +35,7 @@ const FeedPage = () => {
 
 	if (!!feedProfileId)
 		return (
-			<div className='mx-4 grid grid-cols-1 place-content-start items-start gap-4'>
+			<div className='grid grid-cols-1 place-content-start items-start gap-4 sm:mx-4'>
 				<FilterBar tag={tag} setTag={setTag} />
 				<FeedSwitcher
 					feedProfileId={feedProfileId}

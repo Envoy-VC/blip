@@ -8,7 +8,7 @@ const VideoPlayer = () => {
 	const { post } = React.useContext(VideoContext);
 	return (
 		<Player
-			poster={<VideoCover video={post} preview={false} />}
+			poster={<VideoCover video={post} preview={false} showDuration={false} />}
 			playbackId={post!.metadata?.animatedUrl}
 			showPipButton
 			objectFit='cover'
