@@ -14,44 +14,24 @@ const VideoCover = ({ video, ...props }: Props) => {
 		let metadata = video?.metadata;
 		let videoMedia = metadata?.media?.at(0);
 		let getVideoCover = () => {
-			if (!!videoMedia?.optimized?.cover) {
-				return {
-					src: getUrlFromURI(videoMedia?.optimized?.cover),
-					alt: videoMedia?.optimized?.altTag || '',
-				};
-			} else if (!!videoMedia?.small?.cover) {
-				return {
-					src: getUrlFromURI(videoMedia?.small?.cover),
-					alt: videoMedia?.small?.altTag || '',
-				};
-			} else if (!!videoMedia?.medium?.cover) {
-				return {
-					src: getUrlFromURI(videoMedia?.medium?.cover),
-					alt: videoMedia?.medium?.altTag || '',
-				};
-			} else if (!!videoMedia?.original?.cover) {
-				return {
-					src: getUrlFromURI(videoMedia?.original?.cover),
-					alt: videoMedia?.original?.altTag || '',
-				};
-			}
+			return {
+				src:
+					videoMedia?.small?.cover ??
+					videoMedia?.medium?.cover ??
+					videoMedia?.optimized?.cover ??
+					videoMedia?.original?.cover ??
+					metadata?.image ??
+					'',
+				alt:
+					videoMedia?.small?.altTag ??
+					videoMedia?.medium?.altTag ??
+					videoMedia?.optimized?.altTag ??
+					videoMedia?.original?.altTag ??
+					metadata?.content ??
+					'',
+			};
 		};
-		let videoCover = getVideoCover();
-		if (!!videoCover) {
-			return videoCover;
-		} else {
-			if (!!metadata?.image) {
-				return {
-					src: getUrlFromURI(metadata?.image),
-					alt: metadata?.content || '',
-				};
-			} else {
-				return {
-					src: '',
-					alt: '',
-				};
-			}
-		}
+		return getVideoCover();
 	};
 	let videoDuration = video?.metadata?.attributes.find((attr) => {
 		if (attr?.traitType === 'durationInSeconds') {
@@ -66,7 +46,12 @@ const VideoCover = ({ video, ...props }: Props) => {
 					{formatVideoDuration(videoDuration?.value)}
 				</div>
 			)}
-			<Image alt={alt} src={src} fallback={VideoFallbackImage.src} {...props} />
+			<Image
+				alt={alt}
+				src={getUrlFromURI(src)}
+				fallback={VideoFallbackImage.src}
+				{...props}
+			/>
 		</div>
 	);
 };
