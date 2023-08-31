@@ -4,6 +4,7 @@ import {
 	useNotifications,
 	Notification,
 } from '@lens-protocol/react-web';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { Dropdown } from 'antd';
 
@@ -52,16 +53,21 @@ const NotificationDropdown = ({
 	dropdownOpen,
 	setDropdownOpen,
 }: Props) => {
-	const { data, loading } = useNotifications({
+	const {
+		data: notifications,
+		loading,
+		hasMore,
+		next,
+	} = useNotifications({
 		profileId: profileId,
 		limit: 10,
 	});
 
 	const handleMenuClick = () => {};
 
-	if (!!data && !loading) {
+	if (!!notifications && !loading) {
 		const items: MenuProps['items'] = [
-			...data.map((notification) => {
+			...notifications.map((notification) => {
 				return {
 					key: notification.notificationId,
 					label: <NotificationPill notification={notification} />,
