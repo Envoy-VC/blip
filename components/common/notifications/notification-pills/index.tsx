@@ -118,8 +118,31 @@ export const NewMentionNotificationPill = ({
 }: {
 	notification: NewMentionNotification;
 }) => {
-	const {} = notification;
-	return <></>;
+	const {
+		createdAt,
+		mentionPublication: { profile, __typename, metadata },
+	} = notification;
+	return (
+		<div className='my-1 flex max-w-xs flex-row items-start gap-2 sm:max-w-md'>
+			<div className='min-w-[42px]'>
+				<ProfileAvatar picture={profile?.picture || null} size={42} />
+			</div>
+			<div className='flex flex-col text-[1rem]'>
+				<span className='break-all font-medium'>{`${
+					profile?.name || profile?.handle
+				} mentioned you in their ${__typename.toLocaleLowerCase()}`}</span>
+				<span className='break-all text-sm'>
+					{__typename === 'Post' &&
+						(metadata.content ?? metadata.name ?? '').slice(0, 64)}
+					{__typename === 'Comment' &&
+						(metadata.content ?? metadata.name ?? '').slice(0, 64)}
+				</span>
+				<span className='text-sm font-medium text-[#aaa]'>
+					{ISOTimeToTimeAgo(createdAt || '')}
+				</span>
+			</div>
+		</div>
+	);
 };
 
 export const NewMirrorNotificationPill = ({
