@@ -39,7 +39,7 @@ const Navbar = () => {
 						onClick={() => toggleSidebar()}
 						className='flex items-center justify-center !p-6 hover:!bg-transparent'
 					/>
-					<Link href='/' className='text-[1.25rem] font-bold'>
+					<Link href='/' className='text-xl font-bold'>
 						Blip
 					</Link>
 				</div>

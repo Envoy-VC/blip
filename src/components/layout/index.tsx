@@ -9,7 +9,7 @@ import {
 import { ThemeProvider } from 'next-themes';
 
 import clsx from 'clsx';
-import { Navbar, SEO } from '~/components/common';
+import { Navbar, SEO, Sidebar } from '~/components/common';
 
 // Font
 import { Inter } from 'next/font/google';
@@ -37,7 +37,7 @@ const Layout = ({ children }: Props) => {
 									<div className='flex flex-col'>
 										<Navbar />
 										<div className='flex flex-row'>
-											{/*<Sidebar sidebarOpen={sidebarOpen} setSideBarOpen={setSidebarOpen} />*/}
+											<Sidebar />
 											{children}
 										</div>
 									</div>
