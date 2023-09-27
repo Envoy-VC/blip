@@ -29,7 +29,7 @@ const Layout = ({ children }: Props) => {
 							<NotificationProvider>
 								<div
 									className={clsx(
-										'flex h-screen flex-col justify-between',
+										'flex h-screen flex-col justify-between overflow-x-hidden',
 										inter.className
 									)}
 								>

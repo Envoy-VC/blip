@@ -7,13 +7,19 @@ html .EmojiPickerReact {
 	--epr-emoji-gap: 2px;
 }
 
+/* Custom Scrollbar */
+
 .custom-scrollbar::-webkit-scrollbar {
-	display: none;
+	width: 5px;
 }
 
-.custom-scrollbar {
-	-ms-overflow-style: none;
-	scrollbar-width: none;
+.custom-scrollbar::-webkit-scrollbar-track {
+	background: #cfe2ff31;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+	background: #d2e1ffc4;
+	border-radius: 12px;
 }
 
 .scrollbar-hide::-webkit-scrollbar {

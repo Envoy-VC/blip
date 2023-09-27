@@ -131,7 +131,7 @@ const Sidebar = () => {
 				staggerDirection: isOpen ? 1 : -1,
 			}}
 			className={clsx(
-				'custom-scrollbar sticky top-0 hidden min-h-screen p-4 shadow-sm sm:flex'
+				'custom-scrollbar sticky top-0 hidden max-h-screen min-w-fit overflow-y-scroll p-4 shadow-sm sm:flex'
 			)}
 		>
 			<div className='flex flex-col gap-2'>
@@ -162,7 +162,7 @@ const Sidebar = () => {
 								size='large'
 								onClick={item.handleClick}
 							>
-								<Icon size={20} className='w-full max-w-[20px]' />
+								<Icon size={20} />
 								<motion.div
 									className={clsx('text-[1rem] font-medium', !isOpen && 'hidden')}
 									key={index}
