@@ -1,6 +1,7 @@
-export const WALLET_CONNECT_PROJECT_ID =
-	process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || '';
-
-export const ENVIRONMENT = process.env.NEXT_PUBLIC_ENVIRONMENT || 'development';
-
-export const LIVEPEER_KEY = process.env.NEXT_PUBLIC_LIVEPEER_KEY || '';
+export const dAppMetadata = {
+	name: 'Blip',
+	description: 'My dApp description',
+	logoUrl: 'https://my-dapp.com/logo.png',
+	url: 'https://my-dapp.com',
+	isDarkMode: true,
+};
