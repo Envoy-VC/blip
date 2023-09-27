@@ -9,7 +9,7 @@ import {
 import { ThemeProvider } from 'next-themes';
 
 import clsx from 'clsx';
-import { Navbar, SEO, Sidebar } from '~/components/common';
+import { Navbar, SEO, Sidebar, MobileNavbar } from '~/components/common';
 
 // Font
 import { Inter } from 'next/font/google';
@@ -41,7 +41,7 @@ const Layout = ({ children }: Props) => {
 											{children}
 										</div>
 									</div>
-									{/*<MobileNavbar />*/}
+									<MobileNavbar />
 								</div>
 							</NotificationProvider>
 						</AntDesignConfigProvider>
