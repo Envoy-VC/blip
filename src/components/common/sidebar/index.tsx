@@ -89,7 +89,7 @@ const Sidebar = () => {
 
 	const containerVariants: Variants = {
 		opened: { width: '15rem' },
-		closed: { width: '5.5rem' },
+		closed: { width: '6.25rem' },
 	};
 
 	const revealVariants = ({
