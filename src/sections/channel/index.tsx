@@ -7,12 +7,9 @@ import {
 	ChannelHome,
 	ChannelShorts,
 	ChannelCommunity,
-} from '~/components/channel';
-
-/*
 	FollowingChannels,
 	ChannelAbout,
-*/
+} from '~/components/channel';
 
 // Types
 import type { Profile } from '@lens-protocol/react-web';
@@ -43,11 +40,9 @@ const ChannelPage = ({ profile }: Props) => {
 				<ChannelNavigation />
 				{!hasFilterParam && <ChannelHome profile={profile} />}
 				{pageParam === 'shorts' && <ChannelShorts profile={profile} />}
-
 				{pageParam === 'community' && <ChannelCommunity profile={profile} />}
-				{/*
-				{activeMenuItem === 'following' && <FollowingChannels profile={profile} />}
-	{activeMenuItem === 'about' && <ChannelAbout profile={profile} />}*/}
+				{pageParam === 'following' && <FollowingChannels profile={profile} />}
+				{pageParam === 'about' && <ChannelAbout profile={profile} />}
 			</div>
 		</div>
 	);

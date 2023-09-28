@@ -5,6 +5,8 @@ import ChannelNavigation from './navigation';
 import ChannelHome from './home';
 import ChannelShorts from './shorts';
 import ChannelCommunity from './community';
+import FollowingChannels from './following';
+import ChannelAbout from './about';
 
 export {
 	ChannelDetailsSkeleton,
@@ -14,4 +16,6 @@ export {
 	ChannelHome,
 	ChannelShorts,
 	ChannelCommunity,
+	FollowingChannels,
+	ChannelAbout,
 };
