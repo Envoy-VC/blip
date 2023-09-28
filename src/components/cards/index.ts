@@ -1,4 +1,6 @@
-import VideoCard from './video-card';
-import VideoCardSkeleton from './video-card/skeleton';
+import VideoCard from './video';
+import VideoCardSkeleton from './video/skeleton';
+import PostCard from './post';
+import PostCardSkeleton from './post/skeleton';
 
-export { VideoCard, VideoCardSkeleton };
+export { VideoCard, VideoCardSkeleton, PostCard, PostCardSkeleton };
