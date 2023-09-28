@@ -20,7 +20,7 @@ const Navbar = () => {
 	const { theme, setTheme } = useTheme();
 	const { isOpen, toggleSidebar } = useSidebarStore();
 	return (
-		<div className='sticky top-0 z-[100] select-none border-b-gray-200 bg-white p-2 px-3 dark:bg-[#121212]'>
+		<div className='sticky top-0 z-[100] h-[8vh] select-none border-b-gray-200 bg-white p-2 px-3 dark:bg-[#121212]'>
 			<div className='flex flex-row items-center justify-between'>
 				<div className='flex flex-row items-center gap-0'>
 					<Button

@@ -22,6 +22,8 @@ html .EmojiPickerReact {
 	border-radius: 12px;
 }
 
+/* Scrollbar Hide */
+
 .scrollbar-hide::-webkit-scrollbar {
 	display: none;
 }
