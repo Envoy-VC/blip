@@ -58,7 +58,7 @@ const FilterBar = () => {
 	};
 
 	return (
-		<div className='flex flex-row items-center gap-2'>
+		<div className='sticky top-[7%] z-[100] flex flex-row items-center gap-2 bg-white py-2 dark:bg-[#121212]'>
 			<Button
 				type='text'
 				icon={<PiCaretLeftBold size={16} />}

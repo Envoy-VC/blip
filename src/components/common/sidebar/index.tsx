@@ -106,6 +106,7 @@ const Sidebar = () => {
 				transition: {
 					type: 'tween',
 					duration,
+					delay,
 				},
 			},
 			open: {
@@ -122,7 +123,7 @@ const Sidebar = () => {
 
 	return (
 		<motion.div
-			initial='closed'
+			initial='opened'
 			variants={containerVariants}
 			animate={isOpen ? 'opened' : 'closed'}
 			transition={{
@@ -131,7 +132,9 @@ const Sidebar = () => {
 				staggerDirection: isOpen ? 1 : -1,
 			}}
 			className={clsx(
-				'custom-scrollbar sticky top-0 hidden max-h-screen min-w-fit overflow-y-scroll p-4 shadow-sm sm:flex'
+				'sticky top-[7.5%] hidden max-h-screen min-w-fit overflow-y-scroll p-4 shadow-sm sm:flex',
+				!isOpen && 'scrollbar-hide',
+				isOpen && 'custom-scrollbar'
 			)}
 		>
 			<div className='flex flex-col gap-2'>

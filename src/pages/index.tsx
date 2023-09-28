@@ -22,7 +22,10 @@ import { VideoCardSkeleton } from '~/components/cards';
 import { LoadingOutlined } from '@ant-design/icons';
 
 // Types
-import type { PublicationMetadataFilters } from '@lens-protocol/react-web';
+import type {
+	PublicationMetadataFilters,
+	Post,
+} from '@lens-protocol/react-web';
 
 const Home: NextPageWithLayout = () => {
 	const searchParams = useSearchParams();
@@ -61,13 +64,12 @@ const Home: NextPageWithLayout = () => {
 		next,
 	} = useExplorePublications({
 		publicationTypes: [PublicationTypes.Post],
-		limit: 30,
 		metadataFilter: filter(),
 	});
 	return (
 		<div className='mx-0 grid grid-cols-1 place-content-start items-start sm:mx-4'>
 			<FilterBar />
-			<div className='flex flex-col px-0 sm:px-2'>
+			<div className='flex flex-col overflow-auto px-0 sm:px-2'>
 				{loading && (
 					<div className='my-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
 						{Array(16)
@@ -82,6 +84,7 @@ const Home: NextPageWithLayout = () => {
 						dataLength={videos.length}
 						next={next}
 						hasMore={hasMore}
+						scrollableTarget='scrollableDiv'
 						loader={
 							<div className='mx-auto w-fit pb-8'>
 								<Spin indicator={<LoadingOutlined style={{ fontSize: 36 }} spin />} />
@@ -89,7 +92,7 @@ const Home: NextPageWithLayout = () => {
 						}
 					>
 						<div className='my-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
-							{videos.map((video, i) => (
+							{(videos as Post[]).map((video, i) => (
 								<VideoCard key={i} publication={video} isOnChannelPage={false} />
 							))}
 						</div>

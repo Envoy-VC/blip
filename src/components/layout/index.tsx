@@ -32,6 +32,7 @@ const Layout = ({ children }: Props) => {
 										'flex h-screen flex-col justify-between overflow-x-hidden',
 										inter.className
 									)}
+									id='scrollableDiv'
 								>
 									<SEO />
 									<div className='flex flex-col'>
