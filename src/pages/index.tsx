@@ -64,6 +64,7 @@ const Home: NextPageWithLayout = () => {
 		next,
 	} = useExplorePublications({
 		publicationTypes: [PublicationTypes.Post],
+		limit: 30,
 		metadataFilter: filter(),
 	});
 	return (
