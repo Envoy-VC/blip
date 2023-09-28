@@ -10,15 +10,20 @@ html .EmojiPickerReact {
 /* Custom Scrollbar */
 
 .custom-scrollbar::-webkit-scrollbar {
-	width: 5px;
+	width: 8px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-	background: #cfe2ff31;
+	background: transparent;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-	background: #d2e1ffc4;
+	background: #5f94ff;
+	border-radius: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+	background: #94b8ff;
 	border-radius: 12px;
 }
 

@@ -132,8 +132,7 @@ const Sidebar = () => {
 				staggerDirection: isOpen ? 1 : -1,
 			}}
 			className={clsx(
-				'sticky top-[8%] hidden max-h-screen min-w-fit overflow-y-scroll p-4 shadow-sm sm:flex',
-				isOpen ? 'custom-scrollbar' : 'scrollbar-hide'
+				'scrollbar-hide sticky top-[8%] hidden max-h-screen min-w-fit overflow-y-scroll p-4 shadow-sm sm:flex'
 			)}
 		>
 			<div className='flex flex-col gap-2'>
