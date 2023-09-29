@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { useProfile, useActiveProfile } from '@lens-protocol/react-web';
 import { Skeleton } from 'antd';
 
-import ChannelPage from '~/sections/channel';
+import { ChannelPage } from '~/sections';
 import { VideoCardSkeleton } from '~/components/cards';
 import {
 	ChannelDetailsSkeleton,
