@@ -4,6 +4,8 @@ import PostCard from './post';
 import PostCardSkeleton from './post/skeleton';
 import FollowingUserCard from './following-user';
 import FollowingCardSkeleton from './following-user/skeleton';
+import RecommendedVideoCard from './recommended-video';
+import RecommendedVideoCardSkeleton from './recommended-video/skeleton';
 
 export {
 	VideoCard,
@@ -12,4 +14,6 @@ export {
 	PostCardSkeleton,
 	FollowingUserCard,
 	FollowingCardSkeleton,
+	RecommendedVideoCard,
+	RecommendedVideoCardSkeleton,
 };

@@ -7,6 +7,7 @@ import {
 	NotificationProvider,
 } from '~/providers';
 import { ThemeProvider } from 'next-themes';
+import NextNProgress from 'nextjs-progressbar';
 
 import clsx from 'clsx';
 import { Navbar, SEO, Sidebar, MobileNavbar } from '~/components/common';
@@ -34,6 +35,13 @@ const Layout = ({ children }: Props) => {
 									)}
 									id='scrollableDiv'
 								>
+									<NextNProgress
+										color='#0F61FF'
+										startPosition={0.3}
+										stopDelayMs={200}
+										height={2}
+										showOnShallow={true}
+									/>
 									<SEO />
 									<div className='flex flex-col'>
 										<Navbar />

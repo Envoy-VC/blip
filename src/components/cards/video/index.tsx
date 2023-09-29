@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
 
@@ -12,6 +13,7 @@ import { ISOTimeToTimeAgo } from '~/helpers/time';
 
 // Types
 import type { AnyPublication } from '@lens-protocol/react-web';
+import clsx from 'clsx';
 
 interface Props {
 	publication: AnyPublication;
@@ -19,14 +21,27 @@ interface Props {
 }
 
 const VideoCard = ({ publication, isOnChannelPage }: Props) => {
+	const searchParams = useSearchParams();
 	const router = useRouter();
 	const video = (publication.__typename === 'Post' && publication) || null;
 	const profile = video?.profile;
 
+	const createQueryString = React.useCallback(
+		(name: string, value: string) => {
+			const params = new URLSearchParams(searchParams);
+			params.set(name, value);
+
+			return params.toString();
+		},
+		[searchParams]
+	);
+
 	const onCardClick = () => {
-		router.push(`/watch/${video?.id}`).catch(() => {
-			toast.error('Something went wrong.');
-		});
+		router
+			.push('/watch?' + createQueryString('v', video?.id ?? ''), '', {
+				scroll: false,
+			})
+			.catch(() => toast.error('Something went wrong'));
 	};
 	return (
 		<div
@@ -36,7 +51,7 @@ const VideoCard = ({ publication, isOnChannelPage }: Props) => {
 			<VideoCover
 				video={video}
 				height={224}
-				className='!w-[500px] object-cover sm:rounded-lg'
+				className={clsx('!w-[500px] object-cover sm:rounded-lg')}
 				preview={false}
 			/>
 			<div className='mx-2 mt-2 flex flex-row items-start gap-3 sm:mx-0'>
