@@ -1,12 +1,7 @@
-import type { Config } from 'tailwindcss';
+import { type Config } from 'tailwindcss';
 
-const config: Config = {
-	content: [
-		'./pages/**/*.{js,ts,jsx,tsx,mdx}',
-		'./components/**/*.{js,ts,jsx,tsx,mdx}',
-		'./sections/**/*.{js,ts,jsx,tsx,mdx}',
-		'./app/**/*.{js,ts,jsx,tsx,mdx}',
-	],
+export default {
+	content: ['./src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		extend: {
 			colors: {
@@ -17,12 +12,10 @@ const config: Config = {
 				'9/16': '9 / 14',
 			},
 		},
-		corePlugins: {
-			aspectRatio: false,
-		},
-		plugins: [require('@tailwindcss/aspect-ratio')],
 	},
+	corePlugins: {
+		aspectRatio: false,
+	},
+	plugins: [require('@tailwindcss/aspect-ratio')],
 	darkMode: 'class',
-};
-
-export default config;
+} satisfies Config;
