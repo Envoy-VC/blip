@@ -31,8 +31,8 @@ const AttributeData = [
 ];
 
 const ProfileAttributes = ({ attributes, type }: Props) => {
-	let content = attributes[type].toString();
-	let attributeData = AttributeData.find((d) => d.key === type);
+	const content = (attributes[type] ?? '').toString();
+	const attributeData = AttributeData.find((d) => d.key === type);
 
 	const getLink = () => {
 		if (type === 'website') {
@@ -46,16 +46,14 @@ const ProfileAttributes = ({ attributes, type }: Props) => {
 	return (
 		<div className='flex flex-row items-center gap-2 text-[1rem] '>
 			{attributeData.icon}
-			<span className='font-sans font-medium'>
-				{attributeData.label}:&nbsp;
-			</span>
+			<span className='font-sans font-medium'>{attributeData.label}:&nbsp;</span>
 			{attributeData.type === 'text' && (
 				<span className='font-sans'>{content}</span>
 			)}
 			{attributeData.type === 'link' && (
 				<Link
 					className='font-sans hover:text-primary hover:underline'
-					href={getLink() || ''}
+					href={getLink() ?? ''}
 					target='_blank'
 				>
 					{content}
